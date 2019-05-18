@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public SpriteRenderer spriteRenderer;
 
+    public Inventory inventory;
+
     public float speed;
 
     #endregion
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour
 
         animator = gameObject.GetComponent<Animator>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        inventory = gameObject.GetComponent<Inventory>();
     }
 
     // Update is called once per frame

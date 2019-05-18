@@ -10,6 +10,19 @@ public class ItemOnMap : MonoBehaviour
     void Start()
     {
         // Destroy(gameObject, lifetime);
+        StartCoroutine(HideAfterSeconds(gameObject, lifetime));
+    }
+
+    IEnumerator HideAfterSeconds(GameObject gObject, float lifetime)
+    {
+        Player player = GlobalVariables.player;
+
+        yield return new WaitForSeconds(lifetime);
+        if (!player.inventory.playerInventory.Contains(gObject))
+        {
+            GlobalVariables.itemSpawner.poolItems.Add(gObject.GetComponent<Item>());
+            gObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

@@ -9,5 +9,7 @@ public class GlobalVariables : Singleton<GlobalVariables>
     public static Player player;
     public static Player player2;
 
+    public static ItemSpawner itemSpawner;
+
     #endregion
 }

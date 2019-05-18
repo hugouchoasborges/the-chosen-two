@@ -11,6 +11,7 @@ public class ItemSpawner : MonoBehaviour
         public GameObject gameObject;
     }
 
+    public List<Item> poolItems;
 
     public int maxObjectInScene;
     public float validMapRange, timeBetweenSpawns;
@@ -18,6 +19,17 @@ public class ItemSpawner : MonoBehaviour
     int currObjectInScene, spawnX, spawnY;
 
     public List<ItemElement> itemTemplates;
+
+    private GameObject GetItemFromPool(GameObject template)
+    {
+        foreach(Item item in poolItems)
+        {
+            if (item.GetType() == template.GetComponent<Item>().GetType())
+                return item.gameObject;
+        }
+
+        return null;
+    }
 
     // Spawn item in a random location of the map
     void spawnItem()
@@ -27,7 +39,17 @@ public class ItemSpawner : MonoBehaviour
         float y_f = (float)spawnY;
         Vector3 spawnPoint = new Vector3(x_f, y_f, -2.0f);
         GameObject itemPreset = selectItemType();
-        GameObject newlySpawnedItem = Instantiate(itemPreset, spawnPoint, Quaternion.identity, transform);
+        GameObject newlySpawnedItem = GetItemFromPool(itemPreset);
+        if(newlySpawnedItem == null)
+        {
+            newlySpawnedItem = Instantiate(itemPreset, spawnPoint, Quaternion.identity, transform);
+        }
+        else
+        {
+            newlySpawnedItem.transform.position = spawnPoint;
+            newlySpawnedItem.transform.parent = transform;
+            newlySpawnedItem.gameObject.SetActive(true);
+        }
         newlySpawnedItem.tag = "Item";
         ItemOnMap itemTimedown = newlySpawnedItem.AddComponent(typeof(ItemOnMap)) as ItemOnMap;
     }
@@ -52,6 +74,7 @@ public class ItemSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GlobalVariables.itemSpawner = this;
         currObjectInScene = 0;
         InvokeRepeating("canSpawnItem", 0.0f, timeBetweenSpawns);
     }
