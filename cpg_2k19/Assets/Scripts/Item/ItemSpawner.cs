@@ -11,7 +11,7 @@ public class ItemSpawner : MonoBehaviour
         public GameObject gameObject;
     }
 
-    public List<Item> poolItems;
+    public List<GameObject> poolItems;
 
     public int maxObjectInScene;
     public float validMapRange, timeBetweenSpawns;
@@ -20,12 +20,23 @@ public class ItemSpawner : MonoBehaviour
 
     public List<ItemElement> itemTemplates;
 
+    private void BuildPool ()
+    {
+        
+        for (int i = 0; i < maxObjectInScene; ++i)
+        {
+            GameObject newItem = selectItemType();
+            newItem.active = false;
+            poolItems.Add(Instantiate(newItem, transform));
+        }
+    }
+
     private GameObject GetItemFromPool(GameObject template)
     {
-        foreach(Item item in poolItems)
+        foreach(GameObject item in poolItems)
         {
-            if (item.GetType() == template.GetComponent<Item>().GetType())
-                return item.gameObject;
+            if ((item.GetComponent<Item>().GetType() == template.GetComponent<Item>().GetType()) && item.active == false)
+                return item;
         }
 
         return null;
@@ -40,15 +51,17 @@ public class ItemSpawner : MonoBehaviour
         Vector3 spawnPoint = new Vector3(x_f, y_f, -2.0f);
         GameObject itemPreset = selectItemType();
         GameObject newlySpawnedItem = GetItemFromPool(itemPreset);
-        if(newlySpawnedItem == null)
+        if(!newlySpawnedItem)
         {
             newlySpawnedItem = Instantiate(itemPreset, spawnPoint, Quaternion.identity, transform);
+            Debug.Log("Não achou!");
         }
         else
         {
+            Debug.Log("Achou");
             newlySpawnedItem.transform.position = spawnPoint;
             newlySpawnedItem.transform.parent = transform;
-            newlySpawnedItem.gameObject.SetActive(true);
+            newlySpawnedItem.SetActive(true);
         }
         newlySpawnedItem.tag = "Item";
         ItemOnMap itemTimedown = newlySpawnedItem.AddComponent(typeof(ItemOnMap)) as ItemOnMap;
@@ -76,6 +89,7 @@ public class ItemSpawner : MonoBehaviour
     {
         GlobalVariables.itemSpawner = this;
         currObjectInScene = 0;
+        BuildPool();
         InvokeRepeating("canSpawnItem", 0.0f, timeBetweenSpawns);
     }
 

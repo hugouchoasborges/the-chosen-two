@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    public int itemHealth;
+
     public virtual void useItem ()
     {
         

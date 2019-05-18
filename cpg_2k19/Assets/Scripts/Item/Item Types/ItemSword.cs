@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class ItemSword : Item
 {
-    public int itemHealth;
-
     public override void useItem()
     {
         // Destroy the item if its health drops to 0
-        if (--itemHealth <= 0)
-        {
-            Destroy(gameObject, 0.0f);
-        }
+        --itemHealth;
+        Debug.Log("Used a sword item! Its health is now " + itemHealth);
     }
 
     public override void dropItem()

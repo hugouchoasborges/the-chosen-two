@@ -18,6 +18,14 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    public void useItem ()
+    {
+        if (GetComponent<Inventory>().playerInventory.Count > 0)
+        {
+            GetComponent<Inventory>().useFirstItem();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Player.cs trigger");

@@ -20,7 +20,7 @@ public class ItemOnMap : MonoBehaviour
         yield return new WaitForSeconds(lifetime);
         if (!player.inventory.playerInventory.Contains(gObject))
         {
-            GlobalVariables.itemSpawner.poolItems.Add(gObject.GetComponent<Item>());
+            GlobalVariables.itemSpawner.poolItems.Add(gObject);
             gObject.SetActive(false);
         }
     }
