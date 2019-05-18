@@ -6,5 +6,7 @@ public class GlobalVariables : Singleton<GlobalVariables>
 {
     #region Variables
 
+    public static Player player;
+
     #endregion
 }
