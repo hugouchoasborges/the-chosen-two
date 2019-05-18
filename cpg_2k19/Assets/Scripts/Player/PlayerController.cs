@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(name, value);
             movementSet2 = true;
         }
-        
-        if(!animator.gameObject.name.Contains("2") && !movementSet)
+
+        if (!animator.gameObject.name.Contains("2") && !movementSet)
         {
             animator.SetBool(name, value);
             movementSet = true;
@@ -58,8 +58,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // Diagonal Movement
-        if (axisX != 0 && axisY > 0.2f) { 
-        
+        if (axisX != 0 && axisY > 0.2f)
+        {
+
             animator.SetBool("diag_up", true);
             animator.SetBool("diag_down", false);
         }
@@ -117,8 +118,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        HandleInput(GlobalVariables.player);
-        HandleInput(GlobalVariables.player2);
+        if (GlobalVariables.player)
+            HandleInput(GlobalVariables.player);
+        if (GlobalVariables.player2)
+            HandleInput(GlobalVariables.player2);
     }
 
 }
