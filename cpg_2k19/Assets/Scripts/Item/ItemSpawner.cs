@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
+
+    [System.Serializable]
+    public class ItemElement{
+        public string name;
+        public GameObject gameObject;
+    }
+
+
     public int maxObjectInScene;
     public float validMapRange, timeBetweenSpawns;
 
     int currObjectInScene, spawnX, spawnY;
+
+    public List<ItemElement> itemTemplates;
 
     // Spawn item in a random location of the map
     void spawnItem()
@@ -17,7 +27,7 @@ public class ItemSpawner : MonoBehaviour
         float y_f = (float)spawnY;
         Vector3 spawnPoint = new Vector3(x_f, y_f, -2.0f);
         GameObject itemPreset = selectItemType();
-        GameObject newlySpawnedItem = Instantiate(itemPreset, spawnPoint, Quaternion.identity);
+        GameObject newlySpawnedItem = Instantiate(itemPreset, spawnPoint, Quaternion.identity, transform);
         ItemOnMap itemTimedown = newlySpawnedItem.AddComponent(typeof(ItemOnMap)) as ItemOnMap;
         Debug.Log("Spawning item at " + x_f + ";" + y_f);
     }
@@ -26,21 +36,8 @@ public class ItemSpawner : MonoBehaviour
     {
         GameObject newItem;
         int typeSelected = (int)Random.Range(0.0f, 3.0f);
-        if (typeSelected == 0)
-        {
-            newItem = GameObject.Find("item_sword_template");
-            ItemSword itemComponent = newItem.AddComponent(typeof(ItemSword)) as ItemSword;
-        }
-        else if (typeSelected == 1)
-        {
-            newItem = GameObject.Find("item_barrier_template");
-            ItemBarrier itemComponent = newItem.AddComponent(typeof(ItemBarrier)) as ItemBarrier;
-        }
-        else
-        {
-            newItem = GameObject.Find("item_potion_template");
-            ItemPotion itemComponent = newItem.AddComponent(typeof(ItemPotion)) as ItemPotion;
-        }
+
+        newItem = itemTemplates[typeSelected].gameObject;
 
         return newItem;
     }
