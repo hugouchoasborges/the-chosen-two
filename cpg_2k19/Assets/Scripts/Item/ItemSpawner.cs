@@ -28,8 +28,8 @@ public class ItemSpawner : MonoBehaviour
         Vector3 spawnPoint = new Vector3(x_f, y_f, -2.0f);
         GameObject itemPreset = selectItemType();
         GameObject newlySpawnedItem = Instantiate(itemPreset, spawnPoint, Quaternion.identity, transform);
+        newlySpawnedItem.tag = "Item";
         ItemOnMap itemTimedown = newlySpawnedItem.AddComponent(typeof(ItemOnMap)) as ItemOnMap;
-        //Debug.Log("Spawning item at " + x_f + ";" + y_f);
     }
 
     GameObject selectItemType ()
@@ -66,7 +66,6 @@ public class ItemSpawner : MonoBehaviour
     void canSpawnItem()
     {
         int currObjectInScene = FindObjectsOfType<ItemOnMap>().Length;
-        //Debug.Log("Checking conditions for Spawn. Current items: " + currObjectInScene);
         if (currObjectInScene < maxObjectInScene)
         {
             spawnItem();
