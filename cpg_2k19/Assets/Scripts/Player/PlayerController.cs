@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
         float axisY = Input.GetAxis("Vertical");
         float axisX = Input.GetAxis("Horizontal");
 
+        if (InputManager.AButton())
+        {
+            Debug.Log("AAAAAAAAAA");
+        }
+
         // Player's movement vector
         Vector3 movement = GetMovementVector(axisX, axisY) * player.speed;
 

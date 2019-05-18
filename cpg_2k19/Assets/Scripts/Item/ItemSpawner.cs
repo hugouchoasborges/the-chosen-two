@@ -29,7 +29,7 @@ public class ItemSpawner : MonoBehaviour
         GameObject itemPreset = selectItemType();
         GameObject newlySpawnedItem = Instantiate(itemPreset, spawnPoint, Quaternion.identity, transform);
         ItemOnMap itemTimedown = newlySpawnedItem.AddComponent(typeof(ItemOnMap)) as ItemOnMap;
-        Debug.Log("Spawning item at " + x_f + ";" + y_f);
+        //Debug.Log("Spawning item at " + x_f + ";" + y_f);
     }
 
     GameObject selectItemType ()
@@ -66,7 +66,7 @@ public class ItemSpawner : MonoBehaviour
     void canSpawnItem()
     {
         int currObjectInScene = FindObjectsOfType<ItemOnMap>().Length;
-        Debug.Log("Checking conditions for Spawn. Current items: " + currObjectInScene);
+        //Debug.Log("Checking conditions for Spawn. Current items: " + currObjectInScene);
         if (currObjectInScene < maxObjectInScene)
         {
             spawnItem();
