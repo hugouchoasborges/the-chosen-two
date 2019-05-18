@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    public void useItem ()
+    public void useItem()
     {
         if (GetComponent<Inventory>().playerInventory.Count > 0)
         {

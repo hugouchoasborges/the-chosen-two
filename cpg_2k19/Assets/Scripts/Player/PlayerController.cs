@@ -5,28 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    #region Variables
-
-    private bool movementSet = false;
-    private bool movementSet2 = false;
-
-    #endregion
-
-    private void SetAnimatorBool(Animator animator, string name, bool value)
-    {
-        if (animator.gameObject.name.Contains("2") && !movementSet2)
-        {
-            animator.SetBool(name, value);
-            movementSet2 = true;
-        }
-
-        if (!animator.gameObject.name.Contains("2") && !movementSet)
-        {
-            animator.SetBool(name, value);
-            movementSet = true;
-        }
-    }
-
     public Vector3 GetMovementVector(float XAxis, float YAxis)
     {
         Vector3 _out = new Vector3(XAxis, YAxis);
@@ -58,24 +36,6 @@ public class PlayerController : MonoBehaviour
             axisX = InputManager.KMainHorizontal();
             axisY = InputManager.KMainVertical();
             aButtonPressed1 = InputManager.KAButton();
-        }
-
-        // Diagonal Movement
-        if (axisX != 0 && axisY > 0.2f)
-        {
-
-            animator.SetBool("diag_up", true);
-            animator.SetBool("diag_down", false);
-        }
-        else if (axisX != 0 && axisY < -0.2f)
-        {
-            animator.SetBool("diag_up", false);
-            animator.SetBool("diag_down", true);
-        }
-        else
-        {
-            animator.SetBool("diag_up", false);
-            animator.SetBool("diag_down", false);
         }
 
         // Horizontal Movement
@@ -126,9 +86,6 @@ public class PlayerController : MonoBehaviour
 
         // Move the player
         player.transform.Translate(movement * Time.deltaTime, Space.World);
-
-        movementSet = false;
-        movementSet2 = false;
     }
 
     private void Update()
