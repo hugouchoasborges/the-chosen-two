@@ -20,7 +20,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GlobalVariables.player = this;
+        if (gameObject.name.Contains("2"))
+            GlobalVariables.player2 = this;
+        else
+            GlobalVariables.player = this;
+
         animator = gameObject.GetComponent<Animator>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -28,6 +32,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

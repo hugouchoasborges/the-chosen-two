@@ -8,12 +8,19 @@ public class PlayerController : MonoBehaviour
     #region Variables
 
     private bool movementSet = false;
+    private bool movementSet2 = false;
 
     #endregion
 
     private void SetAnimatorBool(Animator animator, string name, bool value)
     {
-        if (!movementSet)
+        if (animator.gameObject.name.Contains("2") && !movementSet2)
+        {
+            animator.SetBool(name, value);
+            movementSet2 = true;
+        }
+        
+        if(!animator.gameObject.name.Contains("2") && !movementSet)
         {
             animator.SetBool(name, value);
             movementSet = true;
@@ -30,28 +37,29 @@ public class PlayerController : MonoBehaviour
         return _out;
     }
 
-    private void HandleInput()
+    private void HandleInput(Player player)
     {
-        Player player = GlobalVariables.player;
         Animator animator = player.animator;
         SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
 
+        float axisX;
+        float axisY;
 
-        // Captures user's input
-        float axisY = Input.GetAxis("Vertical");
-        float axisX = Input.GetAxis("Horizontal");
-
-        if (InputManager.AButton())
+        // Captures player's input
+        if (player.name.Contains("2"))
         {
-            Debug.Log("AAAAAAAAAA");
+            axisX = InputManager.JMainHorizontal();
+            axisY = InputManager.JMainVertical();
+        }
+        else
+        {
+            axisX = InputManager.KMainHorizontal();
+            axisY = InputManager.KMainVertical();
         }
 
-        // Player's movement vector
-        Vector3 movement = GetMovementVector(axisX, axisY) * player.speed;
-
         // Diagonal Movement
-        if (axisX != 0 && axisY > 0.2f)
-        {
+        if (axisX != 0 && axisY > 0.2f) { 
+        
             animator.SetBool("diag_up", true);
             animator.SetBool("diag_down", false);
         }
@@ -97,15 +105,20 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("down", true);
         }
 
+        // Player's movement vector
+        Vector3 movement = GetMovementVector(axisX, axisY) * player.speed;
+
         // Move the player
-        transform.Translate(movement * Time.deltaTime, Space.World);
+        player.transform.Translate(movement * Time.deltaTime, Space.World);
 
         movementSet = false;
+        movementSet2 = false;
     }
 
     private void Update()
     {
-        HandleInput();
+        HandleInput(GlobalVariables.player);
+        HandleInput(GlobalVariables.player2);
     }
 
 }
