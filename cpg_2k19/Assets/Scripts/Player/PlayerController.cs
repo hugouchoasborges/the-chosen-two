@@ -98,15 +98,18 @@ public class PlayerController : MonoBehaviour
         if (player2)
             HandleInput(player2);
 
-        if(player1.transform.position.y < player2.transform.position.y)
+        if(player1 && player2)
         {
-            player1.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            player2.GetComponent<SpriteRenderer>().sortingOrder = 0;
-        }
-        else
-        {
-            player2.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            player1.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            if (player1.transform.position.y < player2.transform.position.y)
+            {
+                player1.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                player2.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            }
+            else
+            {
+                player2.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                player1.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            }
         }
     }
 
