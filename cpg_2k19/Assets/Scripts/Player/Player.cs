@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,12 @@ public class Player : MonoBehaviour
     // Components
     [HideInInspector]
     public Animator animator;
+
+    internal void activatedShield()
+    {
+        throw new NotImplementedException();
+    }
+
     [HideInInspector]
     public SpriteRenderer spriteRenderer;
 
@@ -19,6 +26,11 @@ public class Player : MonoBehaviour
     #endregion
 
     public float health;
+    public float barrierTime;
+    bool shieldActive;
+    bool swordEquipped;
+    bool staffEquipped;
+    
 
     public void useItem ()
     {
@@ -28,9 +40,30 @@ public class Player : MonoBehaviour
         }
     }
 
+    // Damage processing
     public void deduceDamage (float damage)
     {
-        health -= damage;
+        if (!shieldActive)
+        {
+            health -= damage;
+        }
+        else if (damage < 0)
+        {
+            health -= damage;
+        }
+    }
+
+    // Barrier effects
+    public void activateBarrier ()
+    {
+        shieldActive = true;
+        StartCoroutine(barrierCountdown(barrierTime));
+    }
+
+    IEnumerator barrierCountdown (float barrierTime)
+    {
+        yield return new WaitForSeconds(barrierTime);
+        shieldActive = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
