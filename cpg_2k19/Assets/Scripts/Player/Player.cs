@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     public void useItem()
     {
-        if (GetComponent<Inventory>().playerInventory.Count > 0)
+        if (GetComponent<Inventory>().currInventorySize > 0)
         {
             GetComponent<Inventory>().useFirstItem();
         }
@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Player.cs trigger");
         GameObject collided = collision.gameObject;
         if (collided.tag == "Item")
         {

@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUIElement: {fileID: 0}
+  defaultSlot: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   inventoryItems: []
 --- !u!50 &501856543992340047
 Rigidbody2D:

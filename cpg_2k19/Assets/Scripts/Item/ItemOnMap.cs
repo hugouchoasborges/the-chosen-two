@@ -18,7 +18,8 @@ public class ItemOnMap : MonoBehaviour
         Player player = GlobalVariables.player;
 
         yield return new WaitForSeconds(lifetime);
-        if (!player.inventory.playerInventory.Contains(gObject))
+
+        if (gObject == player.inventory.slot1 || gObject == player.inventory.slot2 || gObject == player.inventory.slot3)
         {
             GlobalVariables.itemSpawner.poolItems.Add(gObject);
             gObject.SetActive(false);

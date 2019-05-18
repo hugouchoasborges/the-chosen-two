@@ -26,7 +26,7 @@ public class ItemSpawner : MonoBehaviour
         for (int i = 0; i < maxObjectInScene; ++i)
         {
             GameObject newItem = selectItemType();
-            newItem.active = false;
+            newItem.SetActive(false);
             poolItems.Add(Instantiate(newItem, transform));
         }
     }
@@ -35,7 +35,7 @@ public class ItemSpawner : MonoBehaviour
     {
         foreach(GameObject item in poolItems)
         {
-            if ((item.GetComponent<Item>().GetType() == template.GetComponent<Item>().GetType()) && item.active == false)
+            if ((item.GetComponent<Item>().GetType() == template.GetComponent<Item>().GetType()) && (!item.activeSelf))
                 return item;
         }
 
@@ -54,11 +54,9 @@ public class ItemSpawner : MonoBehaviour
         if(!newlySpawnedItem)
         {
             newlySpawnedItem = Instantiate(itemPreset, spawnPoint, Quaternion.identity, transform);
-            Debug.Log("Não achou!");
         }
         else
         {
-            Debug.Log("Achou");
             newlySpawnedItem.transform.position = spawnPoint;
             newlySpawnedItem.transform.parent = transform;
             newlySpawnedItem.SetActive(true);
