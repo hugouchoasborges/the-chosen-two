@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemOnMap : MonoBehaviour
 {
-    public float lifetime = 3.0f;
+    public float lifetime = 10.0f;
 
     // Start is called before the first frame update
     void Start()

@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class ItemSword : Item
 {
-    public virtual void useItem ()
+
+    public override void useItem()
     {
 
     }
 
-    public virtual void dropItem ()
+    public override void dropItem()
     {
 
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,6 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

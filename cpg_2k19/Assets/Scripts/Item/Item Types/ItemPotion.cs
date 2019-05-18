@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class ItemPotion : Item
 {
-    public virtual void useItem ()
+    public override void useItem()
     {
 
     }
 
-    public virtual void dropItem ()
+    public override void dropItem()
     {
 
     }
@@ -23,6 +23,6 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }
