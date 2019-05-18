@@ -7,6 +7,12 @@ public class Player : MonoBehaviour
 
     #region Variables
 
+    // Components
+    [HideInInspector]
+    public Animator animator;
+    [HideInInspector]
+    public SpriteRenderer spriteRenderer;
+
     public float speed;
 
     #endregion
@@ -15,6 +21,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         GlobalVariables.player = this;
+        animator = gameObject.GetComponent<Animator>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
