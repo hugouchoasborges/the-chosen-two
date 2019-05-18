@@ -6,7 +6,7 @@ public class Item : MonoBehaviour
 {
     public int itemHealth;
 
-    public virtual void useItem ()
+    public virtual void useItem (GameObject user)
     {
         
     }

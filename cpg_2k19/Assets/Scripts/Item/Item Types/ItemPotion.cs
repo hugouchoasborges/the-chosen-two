@@ -5,11 +5,11 @@ using UnityEngine;
 public class ItemPotion : Item
 {
 
-    public override void useItem()
+    public override void useItem(GameObject user)
     {
         // Destroy the item if its health drops to 0
         --itemHealth;
-        Debug.Log("Used a potion item! Its health is now " + itemHealth);
+        //Debug.Log("Used a potion item! Its health is now " + itemHealth);
     }
 
     public override void dropItem()

@@ -18,12 +18,19 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    public void useItem()
+    public float health;
+
+    public void useItem ()
     {
         if (GetComponent<Inventory>().currInventorySize > 0)
         {
             GetComponent<Inventory>().useFirstItem();
         }
+    }
+
+    public void deduceDamage (float damage)
+    {
+        health -= damage;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,6 +55,8 @@ public class Player : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         inventory = gameObject.GetComponent<Inventory>();
+
+        health = 100.0f;
     }
 
     // Update is called once per frame

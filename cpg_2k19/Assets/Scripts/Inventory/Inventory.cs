@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     public void useFirstItem ()
     {
         GameObject firstItem = slot1;
-        firstItem.GetComponent<Item>().useItem();
+        firstItem.GetComponent<Item>().useItem(gameObject);
         // Is health depleted after this usage? If yes, dumps the item from the inventory
         if (isBroken(firstItem))
         {
