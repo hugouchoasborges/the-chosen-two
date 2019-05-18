@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 95781299415572656}
   - component: {fileID: 669517659732236663}
   - component: {fileID: 6911991546978927084}
+  - component: {fileID: 501856543992340047}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -169,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fae9db5c06b6634c88b3c39411d23ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory: []
 --- !u!114 &6911991546978927084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +185,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUIElement: {fileID: 0}
   inventoryItems: []
+--- !u!50 &501856543992340047
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95781299415572650}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
