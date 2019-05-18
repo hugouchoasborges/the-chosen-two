@@ -5,27 +5,36 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     const int maxInventorySize = 3;
-    public List<Item> playerInventory;
+    public List<GameObject> playerInventory;
 
     // Removes the last item from the list when the inventory is full and the player picks up a new item
-    void dumpLastItem ()
+    public void dumpLastItem ()
     {
-        if (playerInventory.Count >= maxInventorySize)
-        {
-            playerInventory.RemoveAt(maxInventorySize - 1);
-        }
+        playerInventory.RemoveAt(2);
+        Debug.Log("Dumped item!");
     }
 
     // Adds a item into the queue
-    void acquireItem (Item addedItem)
+    public void acquireItem (GameObject addedItem)
     {
+        if (playerInventory.Count >= maxInventorySize)
+        {
+            dumpLastItem();
+        }
         playerInventory.Add(addedItem);
+        Debug.Log(playerInventory.Count);
+        gameObject.GetComponent<UIInventory>().updateInventory(playerInventory);
+    }
+
+    public List<GameObject> getPlayerInventory ()
+    {
+        return playerInventory;
     }
         
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

@@ -5,11 +5,17 @@ using UnityEngine;
 public class ItemBarrier : Item
 {
 
-    public override void useItem ()
-    {
+    public int itemHealth;
 
+    public override void useItem()
+    {
+        // Destroy the item if its health drops to 0
+        if (--itemHealth <= 0)
+        {
+            Destroy(gameObject, 0.0f);
+        }
     }
-    
+
     public override void dropItem ()
     {
 
