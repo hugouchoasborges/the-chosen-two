@@ -36,7 +36,9 @@ public class ItemSpawner : MonoBehaviour
         foreach(GameObject item in poolItems)
         {
             if ((item.GetComponent<Item>().GetType() == template.GetComponent<Item>().GetType()) && (!item.activeSelf))
+            {
                 return item;
+            }
         }
 
         return null;

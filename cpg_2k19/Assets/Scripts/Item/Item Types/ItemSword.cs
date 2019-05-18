@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ItemSword : Item
 {
+    public GameObject swordSwing; 
     public override void useItem(GameObject user)
     {
         // Creates a new sword swing where the user is set as the attacker 
         // so he doesn't suffer damage from his own attack
-        EffectSwordSwing swordSwing = GetComponent<EffectSwordSwing>();
-        swordSwing = Instantiate(swordSwing, transform);
-        swordSwing.setAttacker(user.GetComponent<Player>());
+        GameObject attack = Instantiate(swordSwing, user.transform.position, Quaternion.identity, transform);
+        attack.GetComponent<EffectSwordSwing>().setAttacker(GetComponent<Player>());
+
+        Debug.Log("Atacou");
         // SwordSwing(user);
         // Destroy the item if its health drops to 0
         --itemHealth;
