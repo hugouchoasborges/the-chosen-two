@@ -90,10 +90,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (GlobalVariables.player)
-            HandleInput(GlobalVariables.player);
-        if (GlobalVariables.player2)
-            HandleInput(GlobalVariables.player2);
+        Player player1 = GlobalVariables.player;
+        Player player2 = GlobalVariables.player2;
+
+        if (player1)
+            HandleInput(player1);
+        if (player2)
+            HandleInput(player2);
+
+        if(player1.transform.position.y < player2.transform.position.y)
+        {
+            player1.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            player2.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
+        else
+        {
+            player2.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            player1.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
     }
 
 }
