@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemMagic : Item
 {
     public Rigidbody2D magicMissile;
+    RaycastHit2D[] hits;
     public float magicMissileSpeed = 8f;
     public GameObject magicCaster;
 
@@ -23,7 +24,7 @@ public class ItemMagic : Item
 
     void executeMagicStrike(GameObject user)
     {
-        Debug.Log("Usou Mágica");
+        // Debug.Log("Usou Mágica");
         GameObject enemy;
         // Instantiate the missle pointed towards the hostile
 
@@ -38,16 +39,14 @@ public class ItemMagic : Item
         Vector2 enemyPos = enemy.transform.position;
         Vector2 userPos = user.transform.position;
         Vector2 angle = enemyPos - userPos;
-        Rigidbody2D missile = Instantiate(magicMissile, user.transform.position, Quaternion.identity);
-        missile.velocity = angle;
-        Physics.IgnoreCollision(missile.gameObject.GetComponent<SphereCollider>(), user.GetComponent<BoxCollider>());
-        
+        Rigidbody2D missile = Instantiate(magicMissile, user.transform.position, Quaternion.identity, user.transform);
+        missile.velocity = angle * magicMissileSpeed * 0.25f;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        hits = new RaycastHit2D[100];
     }
 
     // Update is called once per frame

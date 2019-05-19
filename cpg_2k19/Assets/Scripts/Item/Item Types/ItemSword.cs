@@ -32,11 +32,10 @@ public class ItemSword : Item
         
         Vector2 userForward = user.GetComponent<Player>().getFront();
         RaycastHit2D[] swordHit = Physics2D.RaycastAll(user.transform.position, userForward, 1.0f);
-        Debug.DrawRay(user.transform.position, userForward, Color.green, 3.0f, true);
-        Debug.Log(user.name);
+        // Debug.DrawRay(user.transform.position, userForward, Color.green, 3.0f, true);
+        // Debug.Log(user.name);
         foreach (RaycastHit2D target in swordHit)
         {
-            Debug.Log(target);
             Collider2D targetEval = target.collider;
             if (targetEval.name == "Player2" && user.name == "Player")
             {
