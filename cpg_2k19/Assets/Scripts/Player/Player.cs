@@ -27,9 +27,9 @@ public class Player : MonoBehaviour
 
     public float health;
     public float barrierTime;
-    bool shieldActive;
-    bool swordEquipped;
-    bool staffEquipped;
+    public bool shieldActive;
+    public bool swordEquipped;
+    public bool staffEquipped;
     
 
     public void useItem ()
@@ -38,7 +38,26 @@ public class Player : MonoBehaviour
         {
             GetComponent<Inventory>().useFirstItem();
         }
+        else
+        {
+            punch();
+        }
     }
+
+    // Punch processing
+    public void punch ()
+    {
+        // Process RayTracing here
+        RaycastHit2D punchHit = Physics2D.Raycast((transform.position + transform.forward * 10.0f), Vector2.zero, 5.0f);
+        Collider2D target = punchHit.collider;
+        Debug.Log(target);
+        if ((target.gameObject.GetType() == this.GetType()) && (!(target.gameObject.Equals(this))))
+        {
+            target.gameObject.GetComponent<Player>().deduceDamage(5.0f);
+            Debug.Log("Nice hit ya wanker!!");
+        }
+    }
+
 
     // Damage processing
     public void deduceDamage (float damage)
@@ -50,12 +69,17 @@ public class Player : MonoBehaviour
         else if (damage < 0)
         {
             health -= damage;
+            if (health > 100.0f)
+            {
+                health = 100.0f;
+            }
         }
     }
 
     // Barrier effects
     public void activateBarrier ()
     {
+        Debug.Log("Shield on!");
         shieldActive = true;
         StartCoroutine(barrierCountdown(barrierTime));
     }
@@ -64,6 +88,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(barrierTime);
         shieldActive = false;
+        Debug.Log("Shield off!");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

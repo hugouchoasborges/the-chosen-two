@@ -6,12 +6,16 @@ public class ItemSword : Item
 {
     public override void useItem(GameObject user)
     {
-
-        Debug.Log("Atacou");
-        // SwordSwing(user);
-        // Destroy the item if its health drops to 0
-        --itemHealth;
-        //Debug.Log("Used a sword item! Its health is now " + itemHealth);
+        if (!user.GetComponent<Player>().shieldActive)
+        {
+            Debug.Log("Atacou");
+            // SwordSwing(user);
+            // Destroy the item if its health drops to 0
+            --itemHealth;
+            //Debug.Log("Used a sword item! Its health is now " + itemHealth);
+        }
+        else
+            return; 
     }
 
     public override void dropItem()
