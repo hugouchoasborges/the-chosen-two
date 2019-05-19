@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     public int enemyMask;
     
     public int facingDir; // 0 - Down, 1 - Left, 2 - Up, 3 - Right
+    public int facingDir8; 
+    // 0 - S | 1 - SW | 2 - W | 3 - NW | 4 - N | 5 - NE | 6 - E | 7 - SE
 
     internal void finishSlash()
     {
@@ -91,6 +93,26 @@ public class Player : MonoBehaviour
         return front;
     }
 
+    public Vector2 getFront8 ()
+    {
+        if (facingDir == 1)
+            return new Vector2(-1.0f, -1.0f);
+        else if (facingDir == 2)
+            return new Vector2(-1.0f, 0.0f);
+        else if (facingDir == 3)
+            return new Vector2(-1.0f, 1.0f);
+        else if (facingDir == 4)
+            return new Vector2(0.0f, 1.0f);
+        else if (facingDir == 5)
+            return new Vector2(1.0f, 1.0f);
+        else if (facingDir == 6)
+            return new Vector2(1.0f, 0.0f);
+        else if (facingDir == 7)
+            return new Vector2(1.0f, -1.0f);
+        else
+            return new Vector2(0.0f, -1.0f);
+    }
+
     // Punch processing
     public void punch ()
     {
@@ -117,7 +139,7 @@ public class Player : MonoBehaviour
                 // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
         }
-        // Debug.DrawRay(transform.position, playerForward, Color.green, 3.0f, true);
+        Debug.DrawRay(transform.position, playerForward, Color.green, 3.0f, true);
         //if (!target)
         //{
         //    return;
@@ -179,7 +201,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         facingDir = 0;
-        
+        facingDir8 = 0;
+
         if (gameObject.name.Contains("2"))
             GlobalVariables.player2 = this;
         else

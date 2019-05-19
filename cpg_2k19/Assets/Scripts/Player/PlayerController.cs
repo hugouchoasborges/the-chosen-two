@@ -72,6 +72,40 @@ public class PlayerController : MonoBehaviour
             player.facingDir = 0;
         }
 
+        // 8 Dir orentation
+        if (axisY < 0 && axisX < 0)
+        {
+            player.facingDir8 = 1;
+        }
+        else if (axisY == 0 && axisX < 0)
+        {
+            player.facingDir8 = 2;
+        }
+        else if (axisY > 0 && axisX < 0)
+        {
+            player.facingDir8 = 3;
+        }
+        else if (axisY > 0 && axisX == 0)
+        {
+            player.facingDir8 = 4;
+        }
+        else if (axisY > 0 && axisX > 0)
+        {
+            player.facingDir8 = 5;
+        }
+        else if (axisY == 0 && axisX > 0)
+        {
+            player.facingDir8 = 6;
+        }
+        else if (axisY < 0 && axisX > 0)
+        {
+            player.facingDir8 = 7;
+        }
+        else if (axisX < 0 && axisX == 0)
+        {
+            player.facingDir8 = 0;
+        }
+
         // Use item
 
         if (aButtonPressed)
