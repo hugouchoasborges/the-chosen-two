@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
         {
             dumpFirstItem();
             gameObject.GetComponent<UIInventory>().updateInventory(slot1, slot2, slot3, currInventorySize);
-            Debug.Log("First item broke and was dumped!");
+            // Debug.Log("First item broke and was dumped!");
         }
     }
     
