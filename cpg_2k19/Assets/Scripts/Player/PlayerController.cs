@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
         float axisY;
         bool aButtonPressed = false;
 
+        if (player.isDead)
+            return;
+
         // Captures player's input
         if (player.name.Contains("2"))
         {

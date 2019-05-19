@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     public bool shieldActive;
     public bool swordEquipped;
     public bool staffEquipped;
+    public bool isDead;
+    public bool isDamaged;
     public int selfMask;
     public int enemyMask;
     
@@ -58,13 +60,16 @@ public class Player : MonoBehaviour
 
     public void useItem ()
     {
-        if (GetComponent<Inventory>().currInventorySize > 0)
+        if (!isDead)
         {
-            GetComponent<Inventory>().useFirstItem();
-        }
-        else
-        {
-            punch();
+            if (GetComponent<Inventory>().currInventorySize > 0)
+            {
+                GetComponent<Inventory>().useFirstItem();
+            }
+            else
+            {
+                punch();
+            }
         }
     }
 
@@ -154,25 +159,33 @@ public class Player : MonoBehaviour
     // Damage processing
     public void deduceDamage (float damage)
     {
-        if (!shieldActive)
+        if (!isDead)
         {
-            health -= damage;
-        }
-        else if (damage < 0)
-        {
-            health -= damage;
-            if (health > 100.0f)
+            if (!shieldActive)
             {
-                health = 100.0f;
+                health -= damage;
             }
+            else if (damage < 0)
+            {
+                health -= damage;
+                if (health > 100.0f)
+                {
+                    health = 100.0f;
+                }
+            }
+            HealthBar.fillAmount = health / 100f;
+            if (health <= 0)
+            {
+                isDead = true;
+            }
+            isDamaged = true;
         }
-        HealthBar.fillAmount = health / 100f;
     }
 
     // Barrier effects
     public void activateBarrier ()
     {
-        Debug.Log("Shield on!");
+        // Debug.Log("Shield on!");
         shieldActive = true;
         oldColor = spriteRenderer.color;
         spriteRenderer.color = Color.yellow;
@@ -183,7 +196,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(barrierTime);
         shieldActive = false;
-        Debug.Log("Shield off!");
+        // Debug.Log("Shield off!");
         spriteRenderer.color = oldColor;
     }
 
@@ -212,7 +225,8 @@ public class Player : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         inventory = gameObject.GetComponent<Inventory>();
-
+        isDead = false;
+        isDamaged = false;
         health = 100.0f;
     }
 

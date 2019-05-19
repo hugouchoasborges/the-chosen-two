@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemOnMap : MonoBehaviour
 {
     public float lifetime = 10.0f;
+    Rigidbody2D floating;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,5 @@ public class ItemOnMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

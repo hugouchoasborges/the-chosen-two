@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2828044196450667093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.0640173, y: 1.3259212, z: -1.0001309}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   magicMissile: {fileID: 4129915177241964287, guid: 29cc6491f1783c94ba44e559be7d097a,
     type: 3}
   magicMissileSpeed: 8
+  magicCaster: {fileID: 0}
 --- !u!61 &1764681209694075754
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66,7 +67,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
+    oldSize: {x: 2.6, y: 2.6}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -112,8 +113,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0.072656155, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f56c1fd407096df46afc8caad80037e4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
