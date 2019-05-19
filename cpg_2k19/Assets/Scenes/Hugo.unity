@@ -854,6 +854,11 @@ PrefabInstance:
       propertyPath: timeBetweenSpawns
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6557954265421330818, guid: e5108503e5cbdfd42976089dbc7071ee,
+        type: 3}
+      propertyPath: itemTemplates.Array.data[3].name
+      value: MagicMissile
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5108503e5cbdfd42976089dbc7071ee, type: 3}
 --- !u!1 &1916226558
