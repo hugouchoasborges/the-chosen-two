@@ -32,6 +32,13 @@ public class Player : MonoBehaviour
     public bool staffEquipped;
     
 
+    internal void finishSlash()
+    {
+        animator.SetBool("Slash_Horizontal", false);
+        animator.SetBool("Slash_Up", false);
+        animator.SetBool("Slash_Down", false);
+    }
+
     public void useItem ()
     {
         if (GetComponent<Inventory>().currInventorySize > 0)

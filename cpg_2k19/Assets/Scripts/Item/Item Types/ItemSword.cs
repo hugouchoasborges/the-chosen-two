@@ -8,6 +8,9 @@ public class ItemSword : Item
     {
         if (!user.GetComponent<Player>().shieldActive)
         {
+            user.GetComponent<Player>().animator.SetBool("Slash_Horizontal", true);
+            user.GetComponent<Player>().animator.SetBool("Slash_Up", true);
+            user.GetComponent<Player>().animator.SetBool("Slash_Down", true);
             Debug.Log("Atacou");
             // SwordSwing(user);
             // Destroy the item if its health drops to 0
