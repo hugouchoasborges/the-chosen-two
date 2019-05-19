@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     public int selfMask;
     public int enemyMask;
     
+    public int facingDir; // 0 - Down, 1 - Left, 2 - Up, 3 - Right
 
     internal void finishSlash()
     {
@@ -58,21 +59,54 @@ public class Player : MonoBehaviour
         }
     }
 
+    public Vector2 getFront ()
+    {
+        Vector2 front = new Vector2(1.0f, 1.0f);
+        if (facingDir == 3)
+        {
+            front.y *= 0.0f;
+        }
+        else if (facingDir == 2)
+        {
+            front.x *= 0.0f;
+            front.y *= 1.0f;
+        }
+        else if (facingDir == 1)
+        {
+            front.x *= -1.0f;
+            front.y *= 0.0f;
+        }
+        else
+        {
+            front.x *= 0.0f;
+            front.y *= -1.0f;
+        }
+        return front;
+    }
+
     // Punch processing
     public void punch ()
     {
         // Process RayTracing here
-        RaycastHit2D[] punchHit = Physics2D.RaycastAll(transform.position, (transform.position + transform.forward), 5.0f);
+        Vector2 playerForward = getFront();
+        RaycastHit2D[] punchHit = Physics2D.RaycastAll(transform.position, playerForward, 100.0f);
         foreach (RaycastHit2D target in punchHit)
         {
             Collider2D targetEval = target.collider; 
-            if (targetEval.name == "Player2")
+            if (targetEval.name == "Player2" && this.name == "Player")
             {
-                Debug.Log("Hit player 2");
-                Debug.Log("My name is " + this.name);
+                Debug.Log("Blue hits red!");
+                targetEval.GetComponent<Player>().deduceDamage(5.0f);
+                Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
+            }
+            else if (targetEval.name == "Player" && this.name == "Player2")
+            {
+                Debug.Log("Red hits blue!");
+                targetEval.GetComponent<Player>().deduceDamage(5.0f);
+                Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
         }
-        Debug.DrawRay(transform.position, (transform.position + transform.forward), Color.green, 10.0f, true);
+        Debug.DrawRay(transform.position, playerForward, Color.green, 3.0f, true);
         //if (!target)
         //{
         //    return;
@@ -83,7 +117,6 @@ public class Player : MonoBehaviour
         //    Debug.Log("Nice hit ya wanker!!");
         //}
     }
-
 
     // Damage processing
     public void deduceDamage (float damage)
@@ -133,6 +166,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        facingDir = 0;
+        
         if (gameObject.name.Contains("2"))
             GlobalVariables.player2 = this;
         else

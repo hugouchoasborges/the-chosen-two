@@ -42,11 +42,13 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
             animator.SetBool("horizontal", true);
+            player.facingDir = 3;
         }
         else if (axisX < 0)
         {
             spriteRenderer.flipX = true;
             animator.SetBool("horizontal", true);
+            player.facingDir = 1;
         }
         else
         {
@@ -62,10 +64,12 @@ public class PlayerController : MonoBehaviour
         else if (axisY > 0)
         {
             animator.SetBool("up", true);
+            player.facingDir = 2;
         }
         else
         {
             animator.SetBool("down", true);
+            player.facingDir = 0;
         }
 
         // Use item
