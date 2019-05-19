@@ -19,7 +19,7 @@ public class ItemSword : Item
             //Debug.Log("Used a sword item! Its health is now " + itemHealth);
         }
         else
-            return; 
+            return;
     }
 
     public override void dropItem()
@@ -29,7 +29,7 @@ public class ItemSword : Item
 
     public void checkForCollision(GameObject user)
     {
-        
+
         Vector2 userForward = user.GetComponent<Player>().getFront();
         RaycastHit2D[] swordHit = Physics2D.RaycastAll(user.transform.position, userForward, 1.0f);
         // Debug.DrawRay(user.transform.position, userForward, Color.green, 3.0f, true);
@@ -40,22 +40,22 @@ public class ItemSword : Item
             if (targetEval.name == "Player2" && user.name == "Player")
             {
                 // Debug.Log("Blue hits red!");
-                targetEval.GetComponent<Player>().deduceDamage(15.0f);
+                targetEval.GetComponent<Player>().deduceDamage(15.0f, userForward);
                 // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
             else if (targetEval.name == "Player" && user.name == "Player2")
             {
                 // Debug.Log("Red hits blue!");
-                targetEval.GetComponent<Player>().deduceDamage(15.0f);
+                targetEval.GetComponent<Player>().deduceDamage(15.0f, userForward);
                 // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
         }
     }
 
-        // Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
-        swordRange = 1.25f;    
+        swordRange = 1.25f;
     }
 
     // Update is called once per frame

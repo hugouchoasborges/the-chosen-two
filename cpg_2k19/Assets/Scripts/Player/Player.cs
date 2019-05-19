@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     public bool isDamaged;
     public int selfMask;
     public int enemyMask;
-    
+
     public int facingDir; // 0 - Down, 1 - Left, 2 - Up, 3 - Right
     public int facingDir8;
     // 0 - S | 1 - SW | 2 - W | 3 - NW | 4 - N | 5 - NE | 6 - E | 7 - SE
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         animator.SetBool("Punch_Down", false);
     }
 
-    public void useItem ()
+    public void useItem()
     {
         if (!isDead)
         {
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public Vector2 getFront ()
+    public Vector2 getFront()
     {
         Vector2 front = new Vector2(1.0f, 1.0f);
         if (facingDir == 3)
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
         return front;
     }
 
-    public Vector2 getFront8 ()
+    public Vector2 getFront8()
     {
         if (facingDir == 1)
             return new Vector2(-1.0f, -1.0f);
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
     }
 
     // Punch processing
-    public void punch ()
+    public void punch()
     {
         animator.SetBool("Punch_Horizontal", true);
         animator.SetBool("Punch_Up", true);
@@ -143,17 +143,17 @@ public class Player : MonoBehaviour
         RaycastHit2D[] punchHit = Physics2D.RaycastAll(transform.position, playerForward, 1.0f);
         foreach (RaycastHit2D target in punchHit)
         {
-            Collider2D targetEval = target.collider; 
+            Collider2D targetEval = target.collider;
             if (targetEval.name == "Player2" && this.name == "Player")
             {
                 // Debug.Log("Blue hits red!");
-                targetEval.GetComponent<Player>().deduceDamage(5.0f);
+                targetEval.GetComponent<Player>().deduceDamage(5.0f, playerForward);
                 // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
             else if (targetEval.name == "Player" && this.name == "Player2")
             {
                 // Debug.Log("Red hits blue!");
-                targetEval.GetComponent<Player>().deduceDamage(5.0f);
+                targetEval.GetComponent<Player>().deduceDamage(5.0f, playerForward);
                 // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
         }
@@ -170,7 +170,13 @@ public class Player : MonoBehaviour
     }
 
     // Damage processing
-    public void deduceDamage (float damage)
+    public void deduceDamage(float damage, Vector2 direction)
+    {
+        //gameObject.GetComponent<Rigidbody2D>().AddForce(-direction * 3);
+        gameObject.transform.Translate(direction / 2);
+        deduceDamage(damage);
+    }
+    public void deduceDamage(float damage)
     {
         if (!isDead)
         {
@@ -196,7 +202,7 @@ public class Player : MonoBehaviour
     }
 
     // Barrier effects
-    public void activateBarrier ()
+    public void activateBarrier()
     {
         // Debug.Log("Shield on!");
         shieldActive = true;
@@ -205,7 +211,7 @@ public class Player : MonoBehaviour
         StartCoroutine(barrierCountdown(barrierTime));
     }
 
-    IEnumerator barrierCountdown (float barrierTime)
+    IEnumerator barrierCountdown(float barrierTime)
     {
         yield return new WaitForSeconds(barrierTime);
         shieldActive = false;
