@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 95781299415572655}
   - component: {fileID: 95781299415572653}
   - component: {fileID: 95781299415572656}
+  - component: {fileID: 501856543992340047}
   - component: {fileID: 669517659732236663}
   - component: {fileID: 6911991546978927084}
-  - component: {fileID: 501856543992340047}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +103,11 @@ MonoBehaviour:
   speed: 3
   health: 100
   barrierTime: 5
+  shieldActive: 0
+  swordEquipped: 0
+  staffEquipped: 0
+  selfMask: 8
+  enemyMask: 9
 --- !u!95 &95781299415572653
 Animator:
   serializedVersion: 3
@@ -148,6 +153,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.8}
   m_EdgeRadius: 0
+--- !u!50 &501856543992340047
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95781299415572650}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &669517659732236663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,24 +206,3 @@ MonoBehaviour:
   inventoryUIElement: {fileID: 0}
   defaultSlot: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   inventoryItems: []
---- !u!50 &501856543992340047
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95781299415572650}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

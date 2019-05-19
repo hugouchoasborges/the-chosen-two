@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     public bool shieldActive;
     public bool swordEquipped;
     public bool staffEquipped;
+    public int selfMask;
+    public int enemyMask;
     
 
     internal void finishSlash()
@@ -60,14 +62,26 @@ public class Player : MonoBehaviour
     public void punch ()
     {
         // Process RayTracing here
-        RaycastHit2D punchHit = Physics2D.Raycast((transform.position + transform.forward * 10.0f), Vector2.zero, 5.0f);
-        Collider2D target = punchHit.collider;
-        Debug.Log(target);
-        if ((target.gameObject.GetType() == this.GetType()) && (!(target.gameObject.Equals(this))))
+        RaycastHit2D[] punchHit = Physics2D.RaycastAll(transform.position, (transform.position + transform.forward), 5.0f);
+        foreach (RaycastHit2D target in punchHit)
         {
-            target.gameObject.GetComponent<Player>().deduceDamage(5.0f);
-            Debug.Log("Nice hit ya wanker!!");
+            Collider2D targetEval = target.collider; 
+            if (targetEval.name == "Player2")
+            {
+                Debug.Log("Hit player 2");
+                Debug.Log("My name is " + this.name);
+            }
         }
+        Debug.DrawRay(transform.position, (transform.position + transform.forward), Color.green, 10.0f, true);
+        //if (!target)
+        //{
+        //    return;
+        //}
+        //if ((target.gameObject.GetType() == this.GetType()) && (!(target.gameObject.Equals(this))))
+        //{
+        //    target.gameObject.GetComponent<Player>().deduceDamage(5.0f);
+        //    Debug.Log("Nice hit ya wanker!!");
+        //}
     }
 
 

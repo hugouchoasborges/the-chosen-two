@@ -93,5 +93,15 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.4625
       objectReference: {fileID: 0}
+    - target: {fileID: 95781299415572655, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: selfMask
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 95781299415572655, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: enemyMask
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601c6bba987622f4b935f26cfbedfabf, type: 3}
