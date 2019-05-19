@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolItems: []
-  maxObjectInScene: 10
+  maxObjectInScene: 20
   validMapRange: 5
-  timeBetweenSpawns: 2.5
+  timeBetweenSpawns: 0.1
   itemTemplates:
   - name: Sword
     gameObject: {fileID: 3792395517376228510, guid: f66ae0d4124e31540a8ba16c754890b8,
@@ -59,4 +59,10 @@ MonoBehaviour:
       type: 3}
   - name: MagicB
     gameObject: {fileID: 2828044196450667093, guid: cb35a4128c059c64e91b81933c85726f,
+      type: 3}
+  - name: Mine
+    gameObject: {fileID: 6072732309978085781, guid: 531d71634f92ec3439ab6580afbf4cfd,
+      type: 3}
+  - name: PotionSanic
+    gameObject: {fileID: 5243771517542518979, guid: 5df28b7cdf0c7f148b7de7c9f763ff9d,
       type: 3}

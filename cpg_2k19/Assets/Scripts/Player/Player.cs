@@ -32,12 +32,14 @@ public class Player : MonoBehaviour
 
     public bool drinking = false;
     public float health;
+    public float attackCooldown = 0.35f;
     public float barrierTime;
     public bool shieldActive;
     public bool swordEquipped;
     public bool staffEquipped;
     public bool isDead;
     public bool isDamaged;
+    public bool isAttacking = false;
     public int selfMask;
     public int enemyMask;
 
@@ -73,8 +75,10 @@ public class Player : MonoBehaviour
 
     public void useItem()
     {
-        if (!isDead)
+        if (!isDead && !isAttacking)
         {
+            isAttacking = true;
+            StartCoroutine(AttackCooldown(attackCooldown));
             if (GetComponent<Inventory>().currInventorySize > 0)
             {
                 GetComponent<Inventory>().useFirstItem();
@@ -83,7 +87,26 @@ public class Player : MonoBehaviour
             {
                 punch();
             }
+            
         }
+    }
+
+    public void sanicMode ()
+    {
+        speed += 4;
+        StartCoroutine(SanicCooldown(4f));
+    }
+
+    IEnumerator AttackCooldown (float time)
+    {
+        yield return new WaitForSeconds(time);
+        isAttacking = false;
+    }
+
+    IEnumerator SanicCooldown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        speed -= 4;
     }
 
     public Vector2 getFront()

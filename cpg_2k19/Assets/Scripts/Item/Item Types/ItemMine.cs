@@ -39,7 +39,7 @@ public class ItemMine : Item
         Vector2 userPos = user.transform.position;
         Vector2 angle = enemyPos - userPos;
         GameObject mine = Instantiate(castMine, user.transform.position, Quaternion.identity);
-        mine.GetComponent<MagicMissile>().caster = user;
+        mine.GetComponent<MineBomb>().caster = user;
     }
 
     // Start is called before the first frame update

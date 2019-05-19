@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6072732309978085781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.0640173, y: 1.3259212, z: -1.0001309}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -50,7 +50,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.6, y: 2.6}
+    oldSize: {x: 6, y: 6}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -96,10 +96,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f56c1fd407096df46afc8caad80037e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c5ac3f003302b24c9fdfcf06c2e0a25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
-  m_FlipY: 1
+  m_FlipX: 0
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
@@ -119,3 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205a716d035f7c44fa446f89d3840ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemHealth: 0
+  castMine: {fileID: 2155445013669746748, guid: 304286869d46c5d4299dff3bb647bd26,
+    type: 3}
+  magicMissileSpeed: 8
+  magicCaster: {fileID: 0}

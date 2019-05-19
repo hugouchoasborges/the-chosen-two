@@ -36,7 +36,9 @@ public class ItemMagic : Item
         Vector2 enemyPos = enemy.transform.position;
         Vector2 userPos = user.transform.position;
         Vector2 angle = enemyPos - userPos;
-        GameObject missile = Instantiate(castMissile, user.transform.position, Quaternion.identity);
+        Quaternion casterAngle = user.transform.rotation;
+        Quaternion enemyAngle = enemy.transform.rotation;
+        GameObject missile = Instantiate(castMissile, user.transform.position, Quaternion.Slerp(casterAngle, enemyAngle, 0.5f));
         missile.GetComponent<MagicMissile>().caster = user;
     }
 
