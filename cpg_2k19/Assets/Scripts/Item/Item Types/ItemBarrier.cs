@@ -10,7 +10,6 @@ public class ItemBarrier : Item
         user.GetComponent<Player>().activateBarrier();
         // Destroy the item if its health drops to 0
         --itemHealth;
-        //Debug.Log("Used a barrier item! Its health is now " + itemHealth);
     }
 
     public override void dropItem ()

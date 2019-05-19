@@ -14,7 +14,6 @@ public class ItemMagic : Item
         executeMagicStrike(user);
         // Destroy the item if its health drops to 0
         --itemHealth;
-        //Debug.Log("Used a barrier item! Its health is now " + itemHealth);
     }
 
     public override void dropItem()
@@ -24,7 +23,6 @@ public class ItemMagic : Item
 
     void executeMagicStrike(GameObject user)
     {
-        // Debug.Log("Usou Mágica");
         GameObject enemy;
         // Instantiate the missle pointed towards the hostile
 

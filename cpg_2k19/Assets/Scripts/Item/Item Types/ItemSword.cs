@@ -16,7 +16,6 @@ public class ItemSword : Item
             // SwordSwing(user);
             // Destroy the item if its health drops to 0
             --itemHealth;
-            //Debug.Log("Used a sword item! Its health is now " + itemHealth);
         }
         else
             return;
@@ -32,22 +31,16 @@ public class ItemSword : Item
 
         Vector2 userForward = user.GetComponent<Player>().getFront();
         RaycastHit2D[] swordHit = Physics2D.RaycastAll(user.transform.position, userForward, 1.0f);
-        // Debug.DrawRay(user.transform.position, userForward, Color.green, 3.0f, true);
-        // Debug.Log(user.name);
         foreach (RaycastHit2D target in swordHit)
         {
             Collider2D targetEval = target.collider;
             if (targetEval.name == "Player2" && user.name == "Player")
             {
-                // Debug.Log("Blue hits red!");
                 targetEval.GetComponent<Player>().deduceDamage(15.0f, userForward);
-                // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
             else if (targetEval.name == "Player" && user.name == "Player2")
             {
-                // Debug.Log("Red hits blue!");
                 targetEval.GetComponent<Player>().deduceDamage(15.0f, userForward);
-                // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
         }
     }

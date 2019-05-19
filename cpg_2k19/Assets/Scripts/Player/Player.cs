@@ -146,27 +146,14 @@ public class Player : MonoBehaviour
             Collider2D targetEval = target.collider;
             if (targetEval.name == "Player2" && this.name == "Player")
             {
-                // Debug.Log("Blue hits red!");
                 targetEval.GetComponent<Player>().deduceDamage(5.0f, playerForward);
-                // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
             else if (targetEval.name == "Player" && this.name == "Player2")
             {
-                // Debug.Log("Red hits blue!");
                 targetEval.GetComponent<Player>().deduceDamage(5.0f, playerForward);
-                // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
         }
         Debug.DrawRay(transform.position, playerForward, Color.green, 3.0f, true);
-        //if (!target)
-        //{
-        //    return;
-        //}
-        //if ((target.gameObject.GetType() == this.GetType()) && (!(target.gameObject.Equals(this))))
-        //{
-        //    target.gameObject.GetComponent<Player>().deduceDamage(5.0f);
-        //    Debug.Log("Nice hit ya wanker!!");
-        //}
     }
 
     // Damage processing
@@ -204,7 +191,7 @@ public class Player : MonoBehaviour
     // Barrier effects
     public void activateBarrier()
     {
-        // Debug.Log("Shield on!");
+        // g("Shield on!");
         shieldActive = true;
         oldColor = spriteRenderer.color;
         spriteRenderer.color = Color.yellow;
@@ -215,7 +202,6 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(barrierTime);
         shieldActive = false;
-        // Debug.Log("Shield off!");
         spriteRenderer.color = oldColor;
     }
 
