@@ -100,24 +100,24 @@ public class Player : MonoBehaviour
 
         // Process RayTracing here
         Vector2 playerForward = getFront();
-        RaycastHit2D[] punchHit = Physics2D.RaycastAll(transform.position, playerForward, 100.0f);
+        RaycastHit2D[] punchHit = Physics2D.RaycastAll(transform.position, playerForward, 1.0f);
         foreach (RaycastHit2D target in punchHit)
         {
             Collider2D targetEval = target.collider; 
             if (targetEval.name == "Player2" && this.name == "Player")
             {
-                Debug.Log("Blue hits red!");
+                // Debug.Log("Blue hits red!");
                 targetEval.GetComponent<Player>().deduceDamage(5.0f);
-                Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
+                // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
             else if (targetEval.name == "Player" && this.name == "Player2")
             {
-                Debug.Log("Red hits blue!");
+                // Debug.Log("Red hits blue!");
                 targetEval.GetComponent<Player>().deduceDamage(5.0f);
-                Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
+                // Debug.Log("HP REMAINING: " + targetEval.GetComponent<Player>().health);
             }
         }
-        Debug.DrawRay(transform.position, playerForward, Color.green, 3.0f, true);
+        // Debug.DrawRay(transform.position, playerForward, Color.green, 3.0f, true);
         //if (!target)
         //{
         //    return;

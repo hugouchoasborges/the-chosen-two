@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemHealth: 1
+  healPower: 30
 --- !u!212 &8311423654140436048
 SpriteRenderer:
   m_ObjectHideFlags: 0
