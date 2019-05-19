@@ -34,8 +34,16 @@ public class Inventory : MonoBehaviour
         slot1 = slot2;
         slot2 = slot3;
         slot3 = null;
-        discardingItem.SetActive(false);
+
+        StartCoroutine(discardItem(discardingItem));
+        //discardingItem.SetActive(false);
         currInventorySize -= 1;
+    }
+
+    public IEnumerator discardItem(GameObject item)
+    {
+        yield return new WaitForSeconds(1f);
+        item.SetActive(false);
     }
 
     public void dumpLastItem()

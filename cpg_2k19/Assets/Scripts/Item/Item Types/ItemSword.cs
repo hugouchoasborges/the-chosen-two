@@ -10,6 +10,12 @@ public class ItemSword : Item
         checkForCollision(user);
         if (!user.GetComponent<Player>().shieldActive)
         {
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            if (audioSource)
+            {
+                audioSource.Play();
+            }
+
             user.GetComponent<Player>().animator.SetBool("Slash_Horizontal", true);
             user.GetComponent<Player>().animator.SetBool("Slash_Up", true);
             user.GetComponent<Player>().animator.SetBool("Slash_Down", true);

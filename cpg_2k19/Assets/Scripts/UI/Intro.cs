@@ -14,6 +14,8 @@ public class Intro : MonoBehaviour
     public Text nextButtonText;
     public Text previousButtonText;
 
+    public AudioSource audioSource;
+
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,8 @@ public class Intro : MonoBehaviour
 
     public void Next()
     {
+        audioSource.Play();
+
         for (int i = 0; i < images.Count; i++)
         {
             Image image = images[i];
@@ -55,6 +59,8 @@ public class Intro : MonoBehaviour
 
     public void Previous()
     {
+        audioSource.Play();
+
         for (int i = images.Count - 1; i > 0; i--)
         {
             Image image = images[i];

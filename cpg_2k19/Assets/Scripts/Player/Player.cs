@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public Animator animator;
     private Color oldColor;
 
+    public List<AudioClip> audioClips;
+
     internal void activatedShield()
     {
         throw new NotImplementedException();
@@ -134,6 +136,14 @@ public class Player : MonoBehaviour
     // Punch processing
     public void punch()
     {
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource)
+        {
+            Debug.Log(audioClips);
+            audioSource.clip = audioClips[1];
+            audioSource.Play();
+        }
+
         animator.SetBool("Punch_Horizontal", true);
         animator.SetBool("Punch_Up", true);
         animator.SetBool("Punch_Down", true);
@@ -165,6 +175,14 @@ public class Player : MonoBehaviour
     }
     public void deduceDamage(float damage)
     {
+
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource && damage > 0)
+        {
+            audioSource.clip = audioClips[0];
+            audioSource.Play();
+        }
+
         if (!isDead)
         {
             if (!shieldActive)

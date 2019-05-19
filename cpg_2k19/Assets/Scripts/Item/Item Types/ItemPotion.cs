@@ -8,6 +8,11 @@ public class ItemPotion : Item
 
     public override void useItem(GameObject user)
     {
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource)
+        {
+            audioSource.Play();
+        }
         //StartCoroutine(DrinkingPotion(user));
         DrinkingPotion(user);
     }
@@ -32,12 +37,12 @@ public class ItemPotion : Item
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

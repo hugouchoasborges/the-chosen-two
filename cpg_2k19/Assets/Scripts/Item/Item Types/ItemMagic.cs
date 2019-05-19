@@ -10,6 +10,11 @@ public class ItemMagic : Item
 
     public override void useItem(GameObject user)
     {
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource)
+        {
+            audioSource.Play();
+        }
         executeMagicStrike(user);
         // Destroy the item if its health drops to 0
         --itemHealth;
