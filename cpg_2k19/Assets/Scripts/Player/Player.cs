@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     // Components
     [HideInInspector]
     public Animator animator;
+    private Color oldColor;
 
     internal void activatedShield()
     {
@@ -88,6 +89,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Shield on!");
         shieldActive = true;
+        oldColor = spriteRenderer.color;
+        spriteRenderer.color = Color.yellow;
         StartCoroutine(barrierCountdown(barrierTime));
     }
 
@@ -96,6 +99,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(barrierTime);
         shieldActive = false;
         Debug.Log("Shield off!");
+        spriteRenderer.color = oldColor;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
