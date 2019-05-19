@@ -57,7 +57,7 @@ public class MagicMissile : MonoBehaviour
 
     IEnumerator CastingTime()
     {
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.15f);
         if (caster.name == "Player")
         {
             target = GlobalVariables.player2.gameObject;

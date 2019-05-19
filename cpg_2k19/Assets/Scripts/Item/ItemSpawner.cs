@@ -70,7 +70,7 @@ public class ItemSpawner : MonoBehaviour
     GameObject selectItemType ()
     {
         GameObject newItem;
-        int typeSelected = (int)Random.Range(0.0f, 4.0f);
+        int typeSelected = (int)Random.Range(0.0f, 6.0f);
 
         newItem = itemTemplates[typeSelected].gameObject;
 
