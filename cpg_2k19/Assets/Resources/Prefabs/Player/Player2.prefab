@@ -88,11 +88,6 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 95781299415572656, guid: 601c6bba987622f4b935f26cfbedfabf,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.4625
-      objectReference: {fileID: 0}
     - target: {fileID: 95781299415572655, guid: 601c6bba987622f4b935f26cfbedfabf,
         type: 3}
       propertyPath: selfMask
@@ -102,6 +97,47 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyMask
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 95781299415572656, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.4625
+      objectReference: {fileID: 0}
+    - target: {fileID: 95781299415572656, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911991546978927084, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: inventoryItems.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911991546978927084, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: inventoryUIElement
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911991546978927084, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: defaultSlot
+      value: 
+      objectReference: {fileID: 21300000, guid: 28fc101b1453598489afda9b6b362a56,
+        type: 3}
+    - target: {fileID: 6911991546978927084, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: inventoryItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911991546978927084, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: inventoryItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911991546978927084, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: inventoryItems.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601c6bba987622f4b935f26cfbedfabf, type: 3}
