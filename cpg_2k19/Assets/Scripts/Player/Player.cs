@@ -47,6 +47,13 @@ public class Player : MonoBehaviour
         animator.SetBool("Slash_Down", false);
     }
 
+    internal void finishPunch()
+    {
+        animator.SetBool("Punch_Horizontal", false);
+        animator.SetBool("Punch_Up", false);
+        animator.SetBool("Punch_Down", false);
+    }
+
     public void useItem ()
     {
         if (GetComponent<Inventory>().currInventorySize > 0)
@@ -87,6 +94,10 @@ public class Player : MonoBehaviour
     // Punch processing
     public void punch ()
     {
+        animator.SetBool("Punch_Horizontal", true);
+        animator.SetBool("Punch_Up", true);
+        animator.SetBool("Punch_Down", true);
+
         // Process RayTracing here
         Vector2 playerForward = getFront();
         RaycastHit2D[] punchHit = Physics2D.RaycastAll(transform.position, playerForward, 100.0f);
