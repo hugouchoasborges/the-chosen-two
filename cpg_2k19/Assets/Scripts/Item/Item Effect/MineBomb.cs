@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicMissile : MonoBehaviour
+public class MineBomb : MonoBehaviour
 {
     bool canMove = false;
     public GameObject caster, target;
@@ -33,7 +33,7 @@ public class MagicMissile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,18 +46,12 @@ public class MagicMissile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPoint, 0.15f);
-            if (Vector3.Distance(transform.position, targetPoint) <= 0.01f)
-                Destroy(gameObject);
-        }
-        
+
     }
 
     IEnumerator CastingTime()
     {
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.1f);
         if (caster.name == "Player")
         {
             target = GlobalVariables.player2.gameObject;

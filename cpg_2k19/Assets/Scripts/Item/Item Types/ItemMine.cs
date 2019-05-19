@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemMagic : Item
+public class ItemMine : Item
 {
-    public GameObject castMissile;
+    public GameObject castMine;
     public float magicMissileSpeed = 8f;
     public GameObject magicCaster;
 
     public override void useItem(GameObject user)
     {
-        executeMagicStrike(user);
+        layMine(user);
         // Destroy the item if its health drops to 0
         --itemHealth;
+        //Debug.Log("Used a barrier item! Its health is now " + itemHealth);
     }
 
     public override void dropItem()
@@ -20,8 +21,9 @@ public class ItemMagic : Item
 
     }
 
-    void executeMagicStrike(GameObject user)
+    void layMine(GameObject user)
     {
+        // Debug.Log("Usou Mágica");
         GameObject enemy;
         // Instantiate the missle pointed towards the hostile
 
@@ -32,12 +34,12 @@ public class ItemMagic : Item
         else
         {
             enemy = GameObject.Find("Player");
-        }        
+        }
         Vector2 enemyPos = enemy.transform.position;
         Vector2 userPos = user.transform.position;
         Vector2 angle = enemyPos - userPos;
-        GameObject missile = Instantiate(castMissile, user.transform.position, Quaternion.identity);
-        missile.GetComponent<MagicMissile>().caster = user;
+        GameObject mine = Instantiate(castMine, user.transform.position, Quaternion.identity);
+        mine.GetComponent<MagicMissile>().caster = user;
     }
 
     // Start is called before the first frame update
