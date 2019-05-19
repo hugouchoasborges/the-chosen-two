@@ -865,6 +865,11 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 2.048
       objectReference: {fileID: 0}
+    - target: {fileID: 7684034380563725230, guid: 374d7f7c4dc8cf147ae74eab7619ae72,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3754655925823560434, guid: 374d7f7c4dc8cf147ae74eab7619ae72,
         type: 3}
       propertyPath: inventoryItems.Array.size
@@ -890,6 +895,11 @@ PrefabInstance:
       propertyPath: inventoryItems.Array.data[2]
       value: 
       objectReference: {fileID: 830256275}
+    - target: {fileID: 7854726097751475537, guid: 374d7f7c4dc8cf147ae74eab7619ae72,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 374d7f7c4dc8cf147ae74eab7619ae72, type: 3}
 --- !u!1 &1351635459
@@ -1166,6 +1176,11 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 2.048
       objectReference: {fileID: 0}
+    - target: {fileID: 95781299415572656, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6911991546978927084, guid: 601c6bba987622f4b935f26cfbedfabf,
         type: 3}
       propertyPath: inventoryItems.Array.size
@@ -1191,6 +1206,11 @@ PrefabInstance:
       propertyPath: inventoryUIElement
       value: 
       objectReference: {fileID: 824611383}
+    - target: {fileID: 501856543992340047, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 601c6bba987622f4b935f26cfbedfabf, type: 3}
 --- !u!1 &1593245317

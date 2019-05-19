@@ -133,6 +133,7 @@ public class Player : MonoBehaviour
                 health = 100.0f;
             }
         }
+        HealthBar.fillAmount = health / 100f;
     }
 
     // Barrier effects
