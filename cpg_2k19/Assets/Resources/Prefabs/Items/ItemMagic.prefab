@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemHealth: 1
-  magicMissile: {fileID: 4129915177241964287, guid: 29cc6491f1783c94ba44e559be7d097a,
+  castMissile: {fileID: 1699751051103902850, guid: 29cc6491f1783c94ba44e559be7d097a,
     type: 3}
   magicMissileSpeed: 8
   magicCaster: {fileID: 0}
