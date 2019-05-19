@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -31,16 +32,16 @@ public class GameController : MonoBehaviour
 
     private void BlueVictory()
     {
-        Debug.Log("Blue Wins!");
+        SceneManager.LoadScene("EndRedWins");
     }
 
     private void RedVictory()
     {
-        Debug.Log("Red Wins!");
+        SceneManager.LoadScene("EndBlueWins");
     }
 
     void SecretEnding ()
     {
-        Debug.Log("Secret Ending triggered!");
+        SceneManager.LoadScene("EndHappy");
     }
 }
