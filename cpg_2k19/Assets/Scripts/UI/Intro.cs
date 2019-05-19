@@ -46,5 +46,6 @@ public class Intro : MonoBehaviour
                 return;
             }
         }
+        SceneManager.LoadScene("MainMenu");
     }
 }
