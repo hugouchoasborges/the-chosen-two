@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    public bool drinking = false;
     public float health;
     public float barrierTime;
     public bool shieldActive;
@@ -41,8 +42,20 @@ public class Player : MonoBehaviour
     public int enemyMask;
     
     public int facingDir; // 0 - Down, 1 - Left, 2 - Up, 3 - Right
-    public int facingDir8; 
+    public int facingDir8;
     // 0 - S | 1 - SW | 2 - W | 3 - NW | 4 - N | 5 - NE | 6 - E | 7 - SE
+
+    internal void StopDrinking()
+    {
+        animator.SetBool("Drink", false);
+    }
+
+    internal void SudoStopDrinking()
+    {
+        animator.SetBool("Drink", false);
+        animator.SetBool("Potion", false);
+        drinking = false;
+    }
 
     internal void finishSlash()
     {

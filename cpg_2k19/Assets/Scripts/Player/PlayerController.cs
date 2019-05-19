@@ -128,9 +128,9 @@ public class PlayerController : MonoBehaviour
         Player player1 = GlobalVariables.player;
         Player player2 = GlobalVariables.player2;
 
-        if (player1)
+        if (player1 && !player1.drinking)
             HandleInput(player1);
-        if (player2)
+        if (player2 && !player2.drinking)
             HandleInput(player2);
 
         if (player1.transform.position.y < player2.transform.position.y)
