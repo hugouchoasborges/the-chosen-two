@@ -10,20 +10,39 @@ public class Intro : MonoBehaviour
     #region Variables
 
     public List<Image> images;
-    private int currentIndex;
+
+    public Text nextButtonText;
+    public Text previousButtonText;
 
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-        currentIndex = 0;
     }
-
 
     public void Next()
     {
-        foreach (Image image in images)
+        for (int i = 0; i < images.Count; i++)
         {
+            Image image = images[i];
+            if (i == (images.Count - 1))
+            {
+                nextButtonText.text = "Jogar";
+            }
+            else
+            {
+                nextButtonText.text = "Próximo";
+            }
+
+            if (i == 1)
+            {
+                previousButtonText.text = "Menu";
+            }
+            else
+            {
+                previousButtonText.text = "Anterior";
+            }
+
             if (!image.IsActive())
             {
                 image.enabled = true;
@@ -36,9 +55,27 @@ public class Intro : MonoBehaviour
 
     public void Previous()
     {
-        for (int i = images.Count-1; i > 0; i--)
+        for (int i = images.Count - 1; i > 0; i--)
         {
             Image image = images[i];
+
+            if (i == (images.Count))
+            {
+                nextButtonText.text = "Jogar";
+            }
+            else
+            {
+                nextButtonText.text = "Próximo";
+            }
+
+            if (i == 0)
+            {
+                previousButtonText.text = "Menu";
+            }
+            else
+            {
+                previousButtonText.text = "Anterior";
+            }
 
             if (image.IsActive())
             {
