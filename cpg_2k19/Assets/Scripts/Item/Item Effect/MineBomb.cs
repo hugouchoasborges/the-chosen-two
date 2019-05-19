@@ -17,7 +17,7 @@ public class MineBomb : MonoBehaviour
     {
         if (collision.gameObject.Equals(target))
         {
-            target.GetComponent<Player>().deduceDamage(30f);
+            target.GetComponent<Player>().deduceDamage(30f, new Vector2(0f,-1f));
             Destroy(gameObject);
         }
         else if (collision.gameObject.Equals(caster))

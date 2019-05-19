@@ -8,6 +8,11 @@ public class ItemPotionSanic : Item
 
     public override void useItem(GameObject user)
     {
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource)
+        {
+            audioSource.Play();
+        }
         //StartCoroutine(DrinkingPotion(user));
         DrinkingPotion(user);
     }
