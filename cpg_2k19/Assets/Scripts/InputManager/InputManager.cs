@@ -12,6 +12,7 @@ public static class InputManager
     {
         float r = 0.0f;
         r += Input.GetAxis("J_MainHorizontal");
+        r += Input.GetAxis("J_MainHorizontal2");
 
         return Mathf.Clamp(r, -1.0f, 1.0f);
     }
@@ -20,6 +21,7 @@ public static class InputManager
     {
         float r = 0.0f;
         r += Input.GetAxis("J_MainVertical");
+        r += Input.GetAxis("J_MainVertical2");
 
         return Mathf.Clamp(r, -1.0f, 1.0f);
     }
