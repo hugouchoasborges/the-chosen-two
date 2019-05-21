@@ -33,7 +33,19 @@ public class Player : MonoBehaviour
     #endregion
 
     public bool drinking = false;
-    public float health;
+    [SerializeField]
+    private float health;
+    public float Health
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            health = Mathf.Clamp(value, 0f, 100f);
+        }
+    }
     public float attackCooldown = 0.35f;
     public float barrierTime;
     public bool shieldActive;
@@ -210,18 +222,14 @@ public class Player : MonoBehaviour
         {
             if (!shieldActive)
             {
-                health -= damage;
+                Health -= damage;
             }
             else if (damage < 0)
             {
-                health -= damage;
-                if (health > 100.0f)
-                {
-                    health = 100.0f;
-                }
+                Health -= damage;
             }
-            HealthBar.fillAmount = health / 100f;
-            if (health <= 0)
+            HealthBar.fillAmount = Health / 100f;
+            if (Health <= 0)
             {
                 isDead = true;
             }
@@ -273,7 +281,7 @@ public class Player : MonoBehaviour
         inventory = gameObject.GetComponent<Inventory>();
         isDead = false;
         isDamaged = false;
-        health = 100.0f;
+        Health = 100.0f;
     }
 
     // Update is called once per frame
