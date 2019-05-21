@@ -87,7 +87,8 @@ public class Player : MonoBehaviour
             }
             else
             {
-                punch();
+                //punch
+                Debug.Log("No More PUNCH when there's no ITEMS");
             }
             
         }
@@ -162,7 +163,6 @@ public class Player : MonoBehaviour
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
         if (audioSource)
         {
-            Debug.Log(audioClips);
             audioSource.clip = audioClips[1];
             audioSource.Play();
         }

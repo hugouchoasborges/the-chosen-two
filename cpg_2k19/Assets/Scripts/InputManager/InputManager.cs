@@ -49,7 +49,7 @@ public static class InputManager
 
     #endregion
 
-    #region Keyboard 
+    #region Keyboard 1 
 
     // -- Axis
     public static float KMainHorizontal()
@@ -89,6 +89,50 @@ public static class InputManager
     public static bool KYButton()
     {
         return Input.GetButtonDown("K_Y_Button");
+    }
+
+    #endregion
+
+    #region Keyboard 2
+
+    // -- Axis
+    public static float K2MainHorizontal()
+    {
+        float r = 0.0f;
+        r += Input.GetAxis("K2_MainHorizontal");
+
+        return Mathf.Clamp(r, -1.0f, 1.0f);
+    }
+
+    public static float K2MainVertical()
+    {
+        float r = 0.0f;
+        r += Input.GetAxis("K2_MainVertical");
+
+        return Mathf.Clamp(r, -1.0f, 1.0f);
+    }
+
+    public static Vector3 K2MainJoystick()
+    {
+        return new Vector3(K2MainHorizontal(), 0, K2MainVertical());
+    }
+
+    // -- Butons
+    public static bool K2AButton()
+    {
+        return Input.GetButtonDown("K2_A_Button");
+    }
+    public static bool K2BButton()
+    {
+        return Input.GetButtonDown("K2_B_Button");
+    }
+    public static bool K2XButton()
+    {
+        return Input.GetButtonDown("K2_X_Button");
+    }
+    public static bool K2YButton()
+    {
+        return Input.GetButtonDown("K2_Y_Button");
     }
 
     #endregion

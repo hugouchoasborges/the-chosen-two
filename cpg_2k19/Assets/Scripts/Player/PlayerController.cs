@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
         float axisX;
         float axisY;
         bool aButtonPressed = false;
+        bool bButtonPressed = false;
+        bool xButtonPressed = false;
+        bool yButtonPressed = false;
 
         if (player.isDead)
             return;
@@ -29,15 +32,24 @@ public class PlayerController : MonoBehaviour
         // Captures player's input
         if (player.name.Contains("2"))
         {
-            axisX = InputManager.JMainHorizontal();
-            axisY = InputManager.JMainVertical();
-            aButtonPressed = InputManager.JAButton();
+            float horizontalAxisEntry = InputManager.JMainHorizontal() + InputManager.K2MainHorizontal();
+            axisX = Mathf.Clamp(horizontalAxisEntry, -1f, 1f);
+
+            float verticalAxisEntry = InputManager.JMainVertical() + InputManager.K2MainVertical();
+            axisY = Mathf.Clamp(verticalAxisEntry, -1f, 1f);
+            aButtonPressed = InputManager.JAButton() || InputManager.K2AButton();
+            bButtonPressed = InputManager.JBButton() || InputManager.K2BButton();
+            xButtonPressed = InputManager.JXButton() || InputManager.K2XButton();
+            yButtonPressed = InputManager.JYButton() || InputManager.K2YButton();
         }
         else
         {
             axisX = InputManager.KMainHorizontal();
             axisY = InputManager.KMainVertical();
             aButtonPressed = InputManager.KAButton();
+            bButtonPressed = InputManager.KBButton();
+            xButtonPressed = InputManager.KXButton();
+            yButtonPressed = InputManager.KYButton();
         }
 
         // Horizontal Movement
@@ -111,7 +123,10 @@ public class PlayerController : MonoBehaviour
 
         // Use item
 
-        if (aButtonPressed)
+        if (aButtonPressed || xButtonPressed)
+        {
+            player.punch();
+        } else if (bButtonPressed || yButtonPressed)
         {
             player.useItem();
         }
