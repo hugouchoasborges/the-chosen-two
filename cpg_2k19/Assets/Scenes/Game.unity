@@ -1831,7 +1831,7 @@ PrefabInstance:
     - target: {fileID: 7684034380563725231, guid: 374d7f7c4dc8cf147ae74eab7619ae72,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.73
+      value: 6.24
       objectReference: {fileID: 0}
     - target: {fileID: 7684034380563725231, guid: 374d7f7c4dc8cf147ae74eab7619ae72,
         type: 3}
@@ -1923,6 +1923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 0.8745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684034380563725232, guid: 374d7f7c4dc8cf147ae74eab7619ae72,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7684034380563725233, guid: 374d7f7c4dc8cf147ae74eab7619ae72,
         type: 3}
@@ -2633,12 +2638,12 @@ PrefabInstance:
     - target: {fileID: 95781299415572657, guid: 601c6bba987622f4b935f26cfbedfabf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.31
+      value: -5.83
       objectReference: {fileID: 0}
     - target: {fileID: 95781299415572657, guid: 601c6bba987622f4b935f26cfbedfabf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 95781299415572657, guid: 601c6bba987622f4b935f26cfbedfabf,
         type: 3}
@@ -2729,7 +2734,7 @@ PrefabInstance:
     - target: {fileID: 95781299415572654, guid: 601c6bba987622f4b935f26cfbedfabf,
         type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 95781299415572655, guid: 601c6bba987622f4b935f26cfbedfabf,
         type: 3}
@@ -3206,6 +3211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3615902422122526259, guid: f23c32f54566c0741ae0746a8d9d5e10,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3615902421957419811, guid: f23c32f54566c0741ae0746a8d9d5e10,
         type: 3}
       propertyPath: m_Sprite
@@ -3388,11 +3398,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RenderMode
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3615902422122526259, guid: f23c32f54566c0741ae0746a8d9d5e10,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3615902420862791695, guid: f23c32f54566c0741ae0746a8d9d5e10,
         type: 3}
