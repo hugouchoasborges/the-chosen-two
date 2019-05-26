@@ -11,6 +11,7 @@ public class ItemPotionSanic : Item
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
         if (audioSource)
         {
+            audioSource.gameObject.SetActive(true);
             audioSource.Play();
         }
         //StartCoroutine(DrinkingPotion(user));
@@ -35,12 +36,12 @@ public class ItemPotionSanic : Item
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

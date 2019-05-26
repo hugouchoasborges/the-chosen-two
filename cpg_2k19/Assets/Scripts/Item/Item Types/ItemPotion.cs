@@ -11,6 +11,7 @@ public class ItemPotion : Item
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
         if (audioSource)
         {
+            audioSource.gameObject.SetActive(true);
             audioSource.Play();
         }
         //StartCoroutine(DrinkingPotion(user));

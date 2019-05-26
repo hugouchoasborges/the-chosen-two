@@ -99,6 +99,7 @@ public class ItemSpawner : MonoBehaviour
 
         spawnX = Mathf.Clamp(Random.Range((float)-validMapRangeX, (float)validMapRangeX) * playersDelta % validMapRangeX, (float)-validMapRangeX, (float)validMapRangeX);
         spawnY = Mathf.Clamp(Random.Range((float)-validMapRangeY, (float)validMapRangeY) * playersDelta % validMapRangeY, (float)-validMapRangeY, (float)validMapRangeY);
+
     }
 
     // Start is called before the first frame update

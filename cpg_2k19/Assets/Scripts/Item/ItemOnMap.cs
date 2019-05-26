@@ -22,15 +22,15 @@ public class ItemOnMap : MonoBehaviour
 
         yield return new WaitForSeconds(lifetime);
 
-        GlobalVariables.itemSpawner.poolItems.Add(gObject);
+        //GlobalVariables.itemSpawner.poolItems.Add(gObject);
         //gObject.transform.position = new Vector2(20f, 20f);
-        gObject.SetActive(false);
+        //gObject.SetActive(false);
 
-        //if ((gObject == player1.inventory.slot1 || gObject == player1.inventory.slot2 || gObject == player1.inventory.slot3) || (gObject == player2.inventory.slot1 || gObject == player2.inventory.slot2 || gObject == player2.inventory.slot3))
-        //{
-        //    GlobalVariables.itemSpawner.poolItems.Add(gObject);
-        //    gObject.SetActive(false);
-        //}
+        if ((gObject != player1.inventory.slot1 && gObject != player1.inventory.slot2 && gObject != player1.inventory.slot3) && (gObject != player2.inventory.slot1 && gObject != player2.inventory.slot2 && gObject != player2.inventory.slot3))
+        {
+            GlobalVariables.itemSpawner.poolItems.Add(gObject);
+            gObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

@@ -296,7 +296,7 @@ public class Player : MonoBehaviour
         if (collided.tag == "Item")
         {
             GetComponent<Inventory>().acquireItem(collided);
-            //collided.GetComponent<Item>().getAbsorbed();
+            collided.GetComponent<Item>().getAbsorbed();
         }
     }
 

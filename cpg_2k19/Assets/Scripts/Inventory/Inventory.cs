@@ -158,7 +158,8 @@ public class Inventory : MonoBehaviour
         }
 
         StartCoroutine(discardItem(selectedItemGameObject));
-        selectedItemGameObject.SetActive(false);
+        //Invoke("discardItem(selectedItemGameObject)", 3f);
+        //selectedItemGameObject.SetActive(false);
         currInventorySize -= 1;
     }
 

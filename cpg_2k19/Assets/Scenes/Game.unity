@@ -1725,7 +1725,7 @@ PrefabInstance:
     - target: {fileID: 6557954265421330818, guid: e5108503e5cbdfd42976089dbc7071ee,
         type: 3}
       propertyPath: timeBetweenSpawns
-      value: 2.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6557954265421330818, guid: e5108503e5cbdfd42976089dbc7071ee,
         type: 3}
@@ -1740,7 +1740,7 @@ PrefabInstance:
     - target: {fileID: 6557954265421330818, guid: e5108503e5cbdfd42976089dbc7071ee,
         type: 3}
       propertyPath: validMapRangeY
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5108503e5cbdfd42976089dbc7071ee, type: 3}
