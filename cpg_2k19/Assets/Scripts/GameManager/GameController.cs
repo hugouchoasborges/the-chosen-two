@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeout = Time.time + 30f;
+        timeout = Time.time + 60f;
     }
 
     // Update is called once per frame

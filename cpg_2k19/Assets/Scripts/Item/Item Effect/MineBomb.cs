@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class MineBomb : MonoBehaviour
 {
-    bool canMove = false;
     public GameObject caster, target;
     Vector2 originPoint, targetPoint;
     CircleCollider2D missileCollider;
     Rigidbody2D missileBody;
-    Vector2 dir;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,9 +60,5 @@ public class MineBomb : MonoBehaviour
         }
         originPoint = caster.transform.position;
         targetPoint = target.transform.position;
-        Debug.Log(dir);
-        float x_a = dir.x;
-        float y_b = dir.y;
-        canMove = true;
     }
 }

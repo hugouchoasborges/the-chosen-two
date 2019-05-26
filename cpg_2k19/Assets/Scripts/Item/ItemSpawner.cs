@@ -14,9 +14,9 @@ public class ItemSpawner : MonoBehaviour
     public List<GameObject> poolItems;
 
     public int maxObjectInScene;
-    public float validMapRange, timeBetweenSpawns;
+    public float validMapRangeX, validMapRangeY, timeBetweenSpawns;
 
-    int currObjectInScene, spawnX, spawnY;
+    float spawnX, spawnY;
 
     public List<ItemElement> itemTemplates;
 
@@ -33,15 +33,29 @@ public class ItemSpawner : MonoBehaviour
 
     private GameObject GetItemFromPool(GameObject template)
     {
-        foreach(GameObject item in poolItems)
+
+        int indexFromPool = System.Array.FindIndex<GameObject>(poolItems.ToArray(), o => o.GetComponent<Item>().GetType() == template.GetComponent<Item>().GetType());
+
+        //foreach (GameObject item in poolItems)
+        //{
+        //    if ((item.GetComponent<Item>().GetType() == template.GetComponent<Item>().GetType()) && (!item.gameObject.activeSelf))
+        //    {
+        //        poolItems.Remove(item);
+        //        return item;
+        //    }
+        //}
+
+        if(indexFromPool > -1)
         {
-            if ((item.GetComponent<Item>().GetType() == template.GetComponent<Item>().GetType()) && (!item.activeSelf))
-            {
-                return item;
-            }
+            GameObject item = poolItems[indexFromPool];
+            poolItems.RemoveAt(indexFromPool);
+
+            return item;
         }
 
-        return null;
+        GameObject newItem = Instantiate(template, transform);
+
+        return newItem;
     }
 
     // Spawn item in a random location of the map
@@ -62,6 +76,7 @@ public class ItemSpawner : MonoBehaviour
             newlySpawnedItem.transform.position = spawnPoint;
             newlySpawnedItem.transform.parent = transform;
             newlySpawnedItem.SetActive(true);
+            newlySpawnedItem.GetComponent<SpriteRenderer>().enabled = true;
         }
         newlySpawnedItem.tag = "Item";
         ItemOnMap itemTimedown = newlySpawnedItem.AddComponent(typeof(ItemOnMap)) as ItemOnMap;
@@ -80,15 +95,16 @@ public class ItemSpawner : MonoBehaviour
     // Get valid coordinates in map
     void getValidCoordinates()
     {
-        spawnX = (int)Random.Range((float)-validMapRange, (float)validMapRange);
-        spawnY = (int)Random.Range((float)-validMapRange, (float)validMapRange);
+        float playersDelta = Mathf.Abs(GlobalVariables.player2.transform.position.x - GlobalVariables.player1.transform.position.x) + Mathf.Abs(GlobalVariables.player2.transform.position.y - GlobalVariables.player1.transform.position.y); ;
+
+        spawnX = Mathf.Clamp(Random.Range((float)-validMapRangeX, (float)validMapRangeX) * playersDelta % validMapRangeX, (float)-validMapRangeX, (float)validMapRangeX);
+        spawnY = Mathf.Clamp(Random.Range((float)-validMapRangeY, (float)validMapRangeY) * playersDelta % validMapRangeY, (float)-validMapRangeY, (float)validMapRangeY);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         GlobalVariables.itemSpawner = this;
-        currObjectInScene = 0;
         BuildPool();
         InvokeRepeating("canSpawnItem", 0.0f, timeBetweenSpawns);
     }

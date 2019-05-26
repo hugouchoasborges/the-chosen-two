@@ -99,19 +99,16 @@ public class PlayerController : MonoBehaviour
         if (leftBumper)
         {
             player.inventory.PreviousItem();
-            Debug.Log("LEFT BUMPEEER");
         }
 
         if (rightBumper)
         {
             player.inventory.NextItem();
-            Debug.Log("RIGHT BUMPEEER");
             rightBumper = true;
         }
 
         if (!triggerHold && Mathf.Abs(trigger) > 0.5f)
         {
-            Debug.Log("Trigger: " + trigger);
             triggerHold = true;
         }
         if (triggerHold && Mathf.Abs(trigger) < 0.6f)

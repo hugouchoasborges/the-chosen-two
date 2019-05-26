@@ -139,12 +139,6 @@ public class Player : MonoBehaviour
             {
                 GetComponent<Inventory>().useSelectedItem();
             }
-            else
-            {
-                //punch
-                Debug.Log("No More PUNCH when there's no ITEMS");
-            }
-            
         }
     }
 
@@ -302,7 +296,7 @@ public class Player : MonoBehaviour
         if (collided.tag == "Item")
         {
             GetComponent<Inventory>().acquireItem(collided);
-            collided.GetComponent<Item>().getAbsorbed();
+            //collided.GetComponent<Item>().getAbsorbed();
         }
     }
 

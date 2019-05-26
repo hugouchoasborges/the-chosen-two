@@ -158,7 +158,7 @@ public class Inventory : MonoBehaviour
         }
 
         StartCoroutine(discardItem(selectedItemGameObject));
-        //discardingItem.SetActive(false);
+        selectedItemGameObject.SetActive(false);
         currInventorySize -= 1;
     }
 
@@ -176,7 +176,8 @@ public class Inventory : MonoBehaviour
 
     public IEnumerator discardItem(GameObject item)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
+        // TODO: Retirar Gambiarra
         item.SetActive(false);
     }
 
@@ -216,6 +217,9 @@ public class Inventory : MonoBehaviour
         }
         currInventorySize += 1;
         gameObject.GetComponent<UIInventory>().updateInventory(slot1, slot2, slot3, currInventorySize);
+        //GlobalVariables.itemSpawner.poolItems.Add(addedItem);
+        //addedItem.SetActive(false);
+        addedItem.transform.position = new Vector2(20f, 20f);
     }
 
     // Update is called once per frame

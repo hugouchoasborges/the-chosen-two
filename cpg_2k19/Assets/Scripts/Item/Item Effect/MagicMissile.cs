@@ -10,7 +10,6 @@ public class MagicMissile : MonoBehaviour
     Vector2 originPoint, targetPoint;
     CircleCollider2D missileCollider;
     Rigidbody2D missileBody;
-    Vector2 dir;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -68,9 +67,6 @@ public class MagicMissile : MonoBehaviour
         }
         originPoint = caster.transform.position;
         targetPoint = target.transform.position;
-        Debug.Log(dir);
-        float x_a = dir.x;
-        float y_b = dir.y;
         canMove = true;
     }
 }

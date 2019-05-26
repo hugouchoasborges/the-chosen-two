@@ -1725,11 +1725,21 @@ PrefabInstance:
     - target: {fileID: 6557954265421330818, guid: e5108503e5cbdfd42976089dbc7071ee,
         type: 3}
       propertyPath: timeBetweenSpawns
-      value: 2.5
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 6557954265421330818, guid: e5108503e5cbdfd42976089dbc7071ee,
         type: 3}
       propertyPath: validMapRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557954265421330818, guid: e5108503e5cbdfd42976089dbc7071ee,
+        type: 3}
+      propertyPath: validMapRangeX
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557954265421330818, guid: e5108503e5cbdfd42976089dbc7071ee,
+        type: 3}
+      propertyPath: validMapRangeY
       value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2208,6 +2218,11 @@ PrefabInstance:
       propertyPath: audioClips.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: c6dedd1994f5d704e85a9bcecfdca422, type: 3}
+    - target: {fileID: 7684034380563725233, guid: 374d7f7c4dc8cf147ae74eab7619ae72,
+        type: 3}
+      propertyPath: barrierTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7684034380563725230, guid: 374d7f7c4dc8cf147ae74eab7619ae72,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -3122,6 +3137,11 @@ PrefabInstance:
       propertyPath: audioClips.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: c6dedd1994f5d704e85a9bcecfdca422, type: 3}
+    - target: {fileID: 95781299415572655, guid: 601c6bba987622f4b935f26cfbedfabf,
+        type: 3}
+      propertyPath: barrierTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 95781299415572656, guid: 601c6bba987622f4b935f26cfbedfabf,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

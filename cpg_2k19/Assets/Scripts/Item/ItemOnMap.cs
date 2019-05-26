@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ItemOnMap : MonoBehaviour
 {
-    public float lifetime = 10.0f;
+    public float lifetime = 15.0f;
     Rigidbody2D floating;
 
     // Start is called before the first frame update
     void Start()
     {
         // Destroy(gameObject, lifetime);
+        lifetime = Random.Range(Mathf.Min(lifetime - 5f, 0f), lifetime + 5f);
         StartCoroutine(HideAfterSeconds(gameObject, lifetime));
     }
 
@@ -21,11 +22,15 @@ public class ItemOnMap : MonoBehaviour
 
         yield return new WaitForSeconds(lifetime);
 
-        if ((gObject == player1.inventory.slot1 || gObject == player1.inventory.slot2 || gObject == player1.inventory.slot3) || (gObject == player2.inventory.slot1 || gObject == player2.inventory.slot2 || gObject == player2.inventory.slot3))
-        {
-            GlobalVariables.itemSpawner.poolItems.Add(gObject);
-            gObject.SetActive(false);
-        }
+        GlobalVariables.itemSpawner.poolItems.Add(gObject);
+        //gObject.transform.position = new Vector2(20f, 20f);
+        gObject.SetActive(false);
+
+        //if ((gObject == player1.inventory.slot1 || gObject == player1.inventory.slot2 || gObject == player1.inventory.slot3) || (gObject == player2.inventory.slot1 || gObject == player2.inventory.slot2 || gObject == player2.inventory.slot3))
+        //{
+        //    GlobalVariables.itemSpawner.poolItems.Add(gObject);
+        //    gObject.SetActive(false);
+        //}
     }
 
     // Update is called once per frame

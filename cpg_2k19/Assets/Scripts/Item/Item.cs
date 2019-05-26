@@ -8,7 +8,7 @@ public class Item : MonoBehaviour
 
     public virtual void useItem (GameObject user)
     {
-        
+        gameObject.SetActive(true);
     }
 
     public virtual void dropItem ()
