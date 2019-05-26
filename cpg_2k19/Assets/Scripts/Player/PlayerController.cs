@@ -32,24 +32,26 @@ public class PlayerController : MonoBehaviour
         // Captures player's input
         if (player.name.Contains("2"))
         {
-            float horizontalAxisEntry = InputManager.JMainHorizontal() + InputManager.K2MainHorizontal();
+            // PLAYER 2
+            float horizontalAxisEntry = InputManager.Joystick1Horizontal() + InputManager.Keyboard2MainHorizontal();
             axisX = Mathf.Clamp(horizontalAxisEntry, -1f, 1f);
 
-            float verticalAxisEntry = InputManager.JMainVertical() + InputManager.K2MainVertical();
+            float verticalAxisEntry = InputManager.Joystick1Vertical() + InputManager.Keyboard2MainVertical();
             axisY = Mathf.Clamp(verticalAxisEntry, -1f, 1f);
-            aButtonPressed = InputManager.JAButton() || InputManager.K2AButton();
-            bButtonPressed = InputManager.JBButton() || InputManager.K2BButton();
-            xButtonPressed = InputManager.JXButton() || InputManager.K2XButton();
-            yButtonPressed = InputManager.JYButton() || InputManager.K2YButton();
+            aButtonPressed = InputManager.Joystick1AButton() || InputManager.Keyboard2AButton();
+            bButtonPressed = InputManager.Joystick1BButton() || InputManager.Keyboard2BButton();
+            xButtonPressed = InputManager.Joystick1XButton() || InputManager.Keyboard2XButton();
+            yButtonPressed = InputManager.Joystick1YButton() || InputManager.Keyboard2YButton();
         }
         else
         {
-            axisX = InputManager.KMainHorizontal();
-            axisY = InputManager.KMainVertical();
-            aButtonPressed = InputManager.KAButton();
-            bButtonPressed = InputManager.KBButton();
-            xButtonPressed = InputManager.KXButton();
-            yButtonPressed = InputManager.KYButton();
+            // PLAYER 1
+            axisX = InputManager.Keyboard1MainHorizontal();
+            axisY = InputManager.Keyboard1MainVertical();
+            aButtonPressed = InputManager.Keyboard1AButton();
+            bButtonPressed = InputManager.Keyboard1BButton();
+            xButtonPressed = InputManager.Keyboard1XButton();
+            yButtonPressed = InputManager.Keyboard1YButton();
         }
 
         // Horizontal Movement
