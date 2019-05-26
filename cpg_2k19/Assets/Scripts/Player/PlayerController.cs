@@ -192,7 +192,10 @@ public class PlayerController : MonoBehaviour
 
         if (aButtonPressed || xButtonPressed)
         {
-            player.punch();
+            if (!player.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name.Contains("punch"))
+            {
+                player.punch();
+            }
         }
         else if (bButtonPressed || yButtonPressed)
         {
