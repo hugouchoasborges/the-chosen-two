@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public PlayerController playerController;
     private Color oldColor;
 
+    public UIInventory uIInventory;
+
     public List<AudioClip> audioClips;
 
     internal void activatedShield()
@@ -63,6 +65,11 @@ public class Player : MonoBehaviour
     // 0 - S | 1 - SW | 2 - W | 3 - NW | 4 - N | 5 - NE | 6 - E | 7 - SE
 
     #endregion
+
+    private void Awake()
+    {
+        uIInventory = GetComponent<UIInventory>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -130,7 +137,7 @@ public class Player : MonoBehaviour
             StartCoroutine(AttackCooldown(attackCooldown));
             if (GetComponent<Inventory>().currInventorySize > 0)
             {
-                GetComponent<Inventory>().useFirstItem();
+                GetComponent<Inventory>().useSelectedItem();
             }
             else
             {

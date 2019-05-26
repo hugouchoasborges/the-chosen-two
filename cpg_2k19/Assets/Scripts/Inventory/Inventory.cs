@@ -1,16 +1,117 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    #region Variables
+    // Components
+
     public int maxInventorySize;
     public int currInventorySize;
     public GameObject slot1, slot2, slot3;
-    //public List<GameObject> playerInventory;
+
+    public Player player;
+
+    [SerializeField]
+    private InventoryItem selectedItem;
+    public InventoryItem SelectedItem
+    {
+        get
+        {
+            return selectedItem;
+        }
+        set
+        {
+            if (selectedItem)
+            {
+                selectedItem.selectedImage.enabled = false;
+            }
+
+
+            selectedItem = value;
+
+            selectedItem.selectedImage.enabled = true;
+
+        }
+    }
+
+    #endregion Variables
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = GetComponent<Player>();
+        currInventorySize = 0;
+        maxInventorySize = 3;
+        slot1 = null;
+        slot2 = null;
+        slot3 = null;
+        SelectedItem = player.uIInventory.inventoryItems[0].GetComponent<InventoryItem>();
+    }
+
+    public void NextItem()
+    {
+        if (SelectedItem == player.uIInventory.inventoryItems[0].GetComponent<InventoryItem>())
+        {
+            SelectedItem = player.uIInventory.inventoryItems[1].GetComponent<InventoryItem>();
+        }
+        else if (SelectedItem == player.uIInventory.inventoryItems[1].GetComponent<InventoryItem>())
+        {
+            SelectedItem = player.uIInventory.inventoryItems[2].GetComponent<InventoryItem>();
+        }
+        else
+        {
+            SelectedItem = player.uIInventory.inventoryItems[0].GetComponent<InventoryItem>();
+        }
+    }
+
+    public void PreviousItem()
+    {
+        if (SelectedItem == player.uIInventory.inventoryItems[0].GetComponent<InventoryItem>())
+        {
+            SelectedItem = player.uIInventory.inventoryItems[2].GetComponent<InventoryItem>();
+        }
+        else if (SelectedItem == player.uIInventory.inventoryItems[1].GetComponent<InventoryItem>())
+        {
+            SelectedItem = player.uIInventory.inventoryItems[0].GetComponent<InventoryItem>();
+        }
+        else
+        {
+            SelectedItem = player.uIInventory.inventoryItems[1].GetComponent<InventoryItem>();
+        }
+    }
+
+    public void useSelectedItem()
+    {
+        GameObject selectedItemGameObject = slot1;
+        if (SelectedItem == player.uIInventory.inventoryItems[1].GetComponent<InventoryItem>())
+        {
+            selectedItemGameObject = slot2;
+        }
+        else if (SelectedItem == player.uIInventory.inventoryItems[2].GetComponent<InventoryItem>())
+        {
+            selectedItemGameObject = slot3;
+        }
+
+        if (selectedItemGameObject == null)
+        {
+            Debug.Log("There's no Item in this Slot");
+            return;
+        }
+        selectedItemGameObject.GetComponent<Item>().useItem(gameObject);
+        // Is health depleted after this usage? If yes, dumps the item from the inventory
+        if (isBroken(selectedItemGameObject))
+        {
+            dumpSelectedItem();
+            gameObject.GetComponent<UIInventory>().updateInventory(slot1, slot2, slot3, currInventorySize);
+            // Debug.Log("First item broke and was dumped!");
+        }
+    }
 
     // Uses the first item in the inventory
-    public void useFirstItem ()
+    public void useFirstItem()
     {
         GameObject firstItem = slot1;
         firstItem.GetComponent<Item>().useItem(gameObject);
@@ -22,10 +123,43 @@ public class Inventory : MonoBehaviour
             // Debug.Log("First item broke and was dumped!");
         }
     }
-    
-    public bool isBroken(GameObject firstItem)
+
+    public bool isBroken(GameObject item)
     {
-        return (firstItem.GetComponent<Item>().itemHealth <= 0);
+        return (item.GetComponent<Item>().itemHealth <= 0);
+    }
+
+    public void dumpSelectedItem()
+    {
+        GameObject selectedItemGameObject = slot1;
+        if (SelectedItem == player.uIInventory.inventoryItems[1].GetComponent<InventoryItem>())
+        {
+            selectedItemGameObject = slot2;
+        }
+        else if (SelectedItem == player.uIInventory.inventoryItems[2].GetComponent<InventoryItem>())
+        {
+            selectedItemGameObject = slot3;
+        }
+
+        if (selectedItemGameObject == slot1)
+        {
+            slot1 = slot2;
+            slot2 = slot3;
+            slot3 = null;
+        }
+        else if (selectedItemGameObject == slot2)
+        {
+            slot2 = slot3;
+            slot3 = null;
+        }
+        else
+        {
+            slot3 = null;
+        }
+
+        StartCoroutine(discardItem(selectedItemGameObject));
+        //discardingItem.SetActive(false);
+        currInventorySize -= 1;
     }
 
     public void dumpFirstItem()
@@ -61,7 +195,7 @@ public class Inventory : MonoBehaviour
     //}
 
     // Adds a item into the queue
-    public void acquireItem (GameObject addedItem)
+    public void acquireItem(GameObject addedItem)
     {
         if (currInventorySize >= maxInventorySize)
         {
@@ -83,21 +217,11 @@ public class Inventory : MonoBehaviour
         currInventorySize += 1;
         gameObject.GetComponent<UIInventory>().updateInventory(slot1, slot2, slot3, currInventorySize);
     }
-        
-    // Start is called before the first frame update
-    void Start()
-    {
-        currInventorySize = 0;
-        maxInventorySize = 3;
-        slot1 = null;
-        slot2 = null;
-        slot3 = null;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 

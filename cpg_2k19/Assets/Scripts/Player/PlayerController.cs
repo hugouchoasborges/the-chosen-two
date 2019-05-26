@@ -98,11 +98,13 @@ public class PlayerController : MonoBehaviour
         // ItemSwitching Buttons
         if (leftBumper)
         {
+            player.inventory.PreviousItem();
             Debug.Log("LEFT BUMPEEER");
         }
 
         if (rightBumper)
         {
+            player.inventory.NextItem();
             Debug.Log("RIGHT BUMPEEER");
             rightBumper = true;
         }
