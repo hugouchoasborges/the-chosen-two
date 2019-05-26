@@ -6,10 +6,8 @@ public class GlobalVariables : Singleton<GlobalVariables>
 {
     #region Variables
 
-    public static Player player;
-    public static Player player2;
-
     public static ItemSpawner itemSpawner;
+    public static Player player1, player2;
 
     #endregion
 }

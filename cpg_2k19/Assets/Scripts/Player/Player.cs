@@ -8,9 +8,12 @@ public class Player : MonoBehaviour
 {
     #region Variables
 
+    public int playerNumber = 0;
+
     // Components
     [HideInInspector]
     public Animator animator;
+    public PlayerController playerController;
     private Color oldColor;
 
     public List<AudioClip> audioClips;
@@ -29,8 +32,6 @@ public class Player : MonoBehaviour
     public Image HealthBar;
 
     public float speed;
-
-    #endregion
 
     public bool drinking = false;
     [SerializeField]
@@ -60,6 +61,40 @@ public class Player : MonoBehaviour
     public int facingDir; // 0 - Down, 1 - Left, 2 - Up, 3 - Right
     public int facingDir8;
     // 0 - S | 1 - SW | 2 - W | 3 - NW | 4 - N | 5 - NE | 6 - E | 7 - SE
+
+    #endregion
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerController = GetComponent<PlayerController>();
+
+        if (gameObject.name.Contains("2"))
+        {
+            GlobalVariables.player2 = this;
+            playerNumber = 2;
+        }
+        else
+        {
+            GlobalVariables.player1 = this;
+            playerNumber = 1;
+        }
+
+        if (playerController && playerController.controllerNumber > 0)
+        {
+            playerController.SetControllerNumber(playerController.controllerNumber);
+        }
+        facingDir = 0;
+        facingDir8 = 0;
+
+        animator = gameObject.GetComponent<Animator>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        inventory = gameObject.GetComponent<Inventory>();
+        isDead = false;
+        isDamaged = false;
+        Health = 100.0f;
+    }
 
     internal void StopDrinking()
     {
@@ -262,26 +297,6 @@ public class Player : MonoBehaviour
             GetComponent<Inventory>().acquireItem(collided);
             collided.GetComponent<Item>().getAbsorbed();
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        facingDir = 0;
-        facingDir8 = 0;
-
-        if (gameObject.name.Contains("2"))
-            GlobalVariables.player2 = this;
-        else
-            GlobalVariables.player = this;
-
-        animator = gameObject.GetComponent<Animator>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-
-        inventory = gameObject.GetComponent<Inventory>();
-        isDead = false;
-        isDamaged = false;
-        Health = 100.0f;
     }
 
     // Update is called once per frame

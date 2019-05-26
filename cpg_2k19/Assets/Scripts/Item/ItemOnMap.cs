@@ -16,11 +16,12 @@ public class ItemOnMap : MonoBehaviour
 
     IEnumerator HideAfterSeconds(GameObject gObject, float lifetime)
     {
-        Player player = GlobalVariables.player;
+        Player player1 = GlobalVariables.player1;
+        Player player2 = GlobalVariables.player2;
 
         yield return new WaitForSeconds(lifetime);
 
-        if (gObject == player.inventory.slot1 || gObject == player.inventory.slot2 || gObject == player.inventory.slot3)
+        if ((gObject == player1.inventory.slot1 || gObject == player1.inventory.slot2 || gObject == player1.inventory.slot3) || (gObject == player2.inventory.slot1 || gObject == player2.inventory.slot2 || gObject == player2.inventory.slot3))
         {
             GlobalVariables.itemSpawner.poolItems.Add(gObject);
             gObject.SetActive(false);

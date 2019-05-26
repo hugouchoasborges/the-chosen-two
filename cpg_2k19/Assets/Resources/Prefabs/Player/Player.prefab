@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 501856543992340047}
   - component: {fileID: 669517659732236663}
   - component: {fileID: 6911991546978927084}
+  - component: {fileID: 5035785554110629315}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -97,19 +98,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db91e02163236ce4eb81c0d05b172cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNumber: 0
   animator: {fileID: 0}
+  audioClips: []
   spriteRenderer: {fileID: 0}
   inventory: {fileID: 0}
   HealthBar: {fileID: 0}
   speed: 3
+  drinking: 0
   health: 100
-  barrierTime: 5
+  attackCooldown: 0.35
+  barrierTime: 10.83
   shieldActive: 0
   swordEquipped: 0
   staffEquipped: 0
+  isDead: 0
+  isDamaged: 0
+  isAttacking: 0
   selfMask: 8
   enemyMask: 9
   facingDir: 0
+  facingDir8: 0
 --- !u!95 &95781299415572653
 Animator:
   serializedVersion: 3
@@ -211,3 +220,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &5035785554110629315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95781299415572650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcab3ae101f3cb143b6d27f32760c08b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -5,137 +5,78 @@ using UnityEngine;
 public static class InputManager
 {
 
-    #region Joystick Player 1 
+    #region Public Methods
 
-    // -- Axis
-    public static float Joystick1Horizontal()
+    public static float Horizontal(PlayerController controller)
     {
         float r = 0.0f;
-        r += Input.GetAxis("Joystick1_AnalogHorizontal");
-        r += Input.GetAxis("Joystick1_DPadHorizontal");
+        r += Input.GetAxis("Joystick" + controller.axisXAnalogStr);
+        r += Input.GetAxis("Joystick" + controller.axisXDPadStr);
+
+        r += Input.GetAxis("Keyboard" + controller.axisXAnalogStr);
+        r += Input.GetAxis("Keyboard" + controller.axisXDPadStr);
 
         return Mathf.Clamp(r, -1.0f, 1.0f);
     }
 
-    public static float Joystick1Vertical()
+    public static float Vertical(PlayerController controller)
     {
         float r = 0.0f;
-        r += Input.GetAxis("Joystick1_AnalogVertical");
-        r += Input.GetAxis("Joystick1_DPadVertical");
+        r += Input.GetAxis("Joystick" + controller.axisYAnalogStr);
+        r += Input.GetAxis("Joystick" + controller.axisYDPadStr);
+                                                       
+        r += Input.GetAxis("Keyboard" + controller.axisYAnalogStr);
+        r += Input.GetAxis("Keyboard" + controller.axisYDPadStr);
 
         return Mathf.Clamp(r, -1.0f, 1.0f);
     }
 
-    public static Vector3 Joystick1Axis()
+    public static bool AButton(PlayerController controller)
     {
-        return new Vector3(Joystick1Horizontal(), Joystick1Vertical(), 0);
+        return Input.GetButtonDown("Joystick" + controller.aButtonStr)
+            || Input.GetButtonDown("Keyboard" + controller.aButtonStr);
     }
 
-    // -- Butons
-    public static bool Joystick1AButton()
+    public static bool BButton(PlayerController controller)
     {
-        return Input.GetButtonDown("Joystick1_A_Button");
+        return Input.GetButtonDown("Joystick" + controller.bButtonStr)
+            || Input.GetButtonDown("Keyboard" + controller.bButtonStr);
     }
-    public static bool Joystick1BButton()
+
+    public static bool XButton(PlayerController controller)
     {
-        return Input.GetButtonDown("Joystick1_B_Button");
+        return Input.GetButtonDown("Joystick" + controller.xButtonStr)
+            || Input.GetButtonDown("Keyboard" + controller.xButtonStr);
     }
-    public static bool Joystick1XButton()
+
+    public static bool YButton(PlayerController controller)
     {
-        return Input.GetButtonDown("Joystick1_X_Button");
+        return Input.GetButtonDown("Joystick" + controller.yButtonStr)
+            || Input.GetButtonDown("Keyboard" + controller.yButtonStr);
     }
-    public static bool Joystick1YButton()
+
+    public static bool LeftBumper(PlayerController controller)
     {
-        return Input.GetButtonDown("Joystick1_Y_Button");
+        return Input.GetButtonDown("Joystick" + controller.leftBumperStr)
+            || Input.GetButtonDown("Keyboard" + controller.leftBumperStr);
+    }
+
+    public static bool RightBumper(PlayerController controller)
+    {
+        return Input.GetButtonDown("Joystick" + controller.rightBumperStr)
+            || Input.GetButtonDown("Keyboard" + controller.rightBumperStr);
+    }
+
+    public static float Trigger(PlayerController controller)
+    {
+        float r = 0.0f;
+        r += Input.GetAxis("Joystick" + controller.triggerAxisStr);
+
+        r += Input.GetAxis("Keyboard" + controller.triggerAxisStr);
+
+        return Mathf.Clamp(r, -1.0f, 1.0f);
     }
 
     #endregion
 
-    #region Keyboard Player 1 
-
-    // -- Axis
-    public static float Keyboard1MainHorizontal()
-    {
-        float r = 0.0f;
-        r += Input.GetAxis("Keyboard1_MainHorizontal");
-
-        return Mathf.Clamp(r, -1.0f, 1.0f);
-    }
-
-    public static float Keyboard1MainVertical()
-    {
-        float r = 0.0f;
-        r += Input.GetAxis("Keyboard1_MainVertical");
-
-        return Mathf.Clamp(r, -1.0f, 1.0f);
-    }
-
-    public static Vector3 Keyboard1Axis()
-    {
-        return new Vector3(Keyboard1MainHorizontal(), Keyboard1MainVertical(), 0);
-    }
-
-    // -- Butons
-    public static bool Keyboard1AButton()
-    {
-        return Input.GetButtonDown("Keyboard1_A_Button");
-    }
-    public static bool Keyboard1BButton()
-    {
-        return Input.GetButtonDown("Keyboard1_B_Button");
-    }
-    public static bool Keyboard1XButton()
-    {
-        return Input.GetButtonDown("Keyboard1_X_Button");
-    }
-    public static bool Keyboard1YButton()
-    {
-        return Input.GetButtonDown("Keyboard1_Y_Button");
-    }
-
-    #endregion
-
-    #region Keyboard Player 2 
-
-    // -- Axis
-    public static float Keyboard2MainHorizontal()
-    {
-        float r = 0.0f;
-        r += Input.GetAxis("Keyboard2_MainHorizontal");
-
-        return Mathf.Clamp(r, -1.0f, 1.0f);
-    }
-
-    public static float Keyboard2MainVertical()
-    {
-        float r = 0.0f;
-        r += Input.GetAxis("Keyboard2_MainVertical");
-
-        return Mathf.Clamp(r, -1.0f, 1.0f);
-    }
-
-    public static Vector3 Keyboard2Axis()
-    {
-        return new Vector3(Keyboard2MainHorizontal(), Keyboard2MainVertical(), 0);
-    }
-
-    // -- Butons
-    public static bool Keyboard2AButton()
-    {
-        return Input.GetButtonDown("Keyboard2_A_Button");
-    }
-    public static bool Keyboard2BButton()
-    {
-        return Input.GetButtonDown("Keyboard2_B_Button");
-    }
-    public static bool Keyboard2XButton()
-    {
-        return Input.GetButtonDown("Keyboard2_X_Button");
-    }
-    public static bool Keyboard2YButton()
-    {
-        return Input.GetButtonDown("Keyboard2_Y_Button");
-    }
-
-    #endregion
 }

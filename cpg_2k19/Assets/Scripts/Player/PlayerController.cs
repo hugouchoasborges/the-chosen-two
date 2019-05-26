@@ -5,6 +5,55 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    #region Variables
+
+    public int controllerNumber;
+
+    // Controllers
+    bool triggerHold = false;
+
+    public string axisXAnalogStr;
+    public string axisYAnalogStr;
+    public string axisXDPadStr;
+    public string axisYDPadStr;
+    public string triggerAxisStr;
+    public string rightBumperStr;
+    public string leftBumperStr;
+    public string aButtonStr;
+    public string bButtonStr;
+    public string xButtonStr;
+    public string yButtonStr;
+
+    // Components
+    public Player player;
+
+    #endregion
+
+
+    private void Start()
+    {
+        player = GetComponent<Player>();
+    }
+
+    public void SetControllerNumber(int number)
+    {
+        axisXAnalogStr = number + "_AnalogHorizontal";
+        axisYAnalogStr = number + "_AnalogVertical";
+        axisXDPadStr = number + "_DPadHorizontal";
+        axisYDPadStr = number + "_DPadVertical";
+
+        aButtonStr = number + "_A_Button";
+        bButtonStr = number + "_B_Button";
+        xButtonStr = number + "_X_Button";
+        yButtonStr = number + "_Y_Button";
+
+        leftBumperStr = number + "_Left_Bumper";
+        rightBumperStr = number + "_Right_Bumper";
+        triggerAxisStr = number + "_Trigger";
+
+        controllerNumber = number;
+    }
+
     public Vector3 GetMovementVector(float XAxis, float YAxis)
     {
         Vector3 _out = new Vector3(XAxis, YAxis);
@@ -15,12 +64,15 @@ public class PlayerController : MonoBehaviour
         return _out;
     }
 
-    private void HandleInput(Player player)
+    private void HandleInput()
     {
         Animator animator = player.animator;
         SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
         float axisX;
         float axisY;
+        float trigger;
+        bool rightBumper = false;
+        bool leftBumper = false;
         bool aButtonPressed = false;
         bool bButtonPressed = false;
         bool xButtonPressed = false;
@@ -30,28 +82,39 @@ public class PlayerController : MonoBehaviour
             return;
 
         // Captures player's input
-        if (player.name.Contains("2"))
-        {
-            // PLAYER 2
-            float horizontalAxisEntry = InputManager.Joystick1Horizontal() + InputManager.Keyboard2MainHorizontal();
-            axisX = Mathf.Clamp(horizontalAxisEntry, -1f, 1f);
 
-            float verticalAxisEntry = InputManager.Joystick1Vertical() + InputManager.Keyboard2MainVertical();
-            axisY = Mathf.Clamp(verticalAxisEntry, -1f, 1f);
-            aButtonPressed = InputManager.Joystick1AButton() || InputManager.Keyboard2AButton();
-            bButtonPressed = InputManager.Joystick1BButton() || InputManager.Keyboard2BButton();
-            xButtonPressed = InputManager.Joystick1XButton() || InputManager.Keyboard2XButton();
-            yButtonPressed = InputManager.Joystick1YButton() || InputManager.Keyboard2YButton();
-        }
-        else
+        axisX = InputManager.Horizontal(this);
+
+        axisY = InputManager.Vertical(this);
+        aButtonPressed = InputManager.AButton(this);
+        bButtonPressed = InputManager.BButton(this);
+        xButtonPressed = InputManager.XButton(this);
+        yButtonPressed = InputManager.YButton(this);
+
+        leftBumper = InputManager.LeftBumper(this);
+        rightBumper = InputManager.RightBumper(this);
+        trigger = InputManager.Trigger(this);
+
+        // ItemSwitching Buttons
+        if (leftBumper)
         {
-            // PLAYER 1
-            axisX = InputManager.Keyboard1MainHorizontal();
-            axisY = InputManager.Keyboard1MainVertical();
-            aButtonPressed = InputManager.Keyboard1AButton();
-            bButtonPressed = InputManager.Keyboard1BButton();
-            xButtonPressed = InputManager.Keyboard1XButton();
-            yButtonPressed = InputManager.Keyboard1YButton();
+            Debug.Log("LEFT BUMPEEER");
+        }
+
+        if (rightBumper)
+        {
+            Debug.Log("RIGHT BUMPEEER");
+            rightBumper = true;
+        }
+
+        if (!triggerHold && Mathf.Abs(trigger) > 0.5f)
+        {
+            Debug.Log("Trigger: " + trigger);
+            triggerHold = true;
+        }
+        if (triggerHold && Mathf.Abs(trigger) < 0.6f)
+        {
+            triggerHold = false;
         }
 
         // Horizontal Movement
@@ -128,7 +191,8 @@ public class PlayerController : MonoBehaviour
         if (aButtonPressed || xButtonPressed)
         {
             player.punch();
-        } else if (bButtonPressed || yButtonPressed)
+        }
+        else if (bButtonPressed || yButtonPressed)
         {
             player.useItem();
         }
@@ -142,24 +206,23 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Player player1 = GlobalVariables.player;
-        Player player2 = GlobalVariables.player2;
-
-        if (player1 && !player1.drinking)
-            HandleInput(player1);
-        if (player2 && !player2.drinking)
-            HandleInput(player2);
-
-        if (player1.transform.position.y < player2.transform.position.y)
+        if (controllerNumber > 0)
         {
-            player1.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            player2.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            if (player && !player.drinking)
+                HandleInput();
         }
-        else
-        {
-            player2.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            player1.GetComponent<SpriteRenderer>().sortingOrder = 0;
-        }
+
+        //if (player1.transform.position.y < player2.transform.position.y)
+        //{
+        //    player1.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        //    player2.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        //}
+        //else
+        //{
+        //    player2.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        //    player1.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        //}
     }
+
 
 }

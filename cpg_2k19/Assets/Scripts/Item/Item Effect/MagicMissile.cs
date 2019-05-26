@@ -64,7 +64,7 @@ public class MagicMissile : MonoBehaviour
         }
         else
         {
-            target = GlobalVariables.player.gameObject;
+            target = GlobalVariables.player1.gameObject;
         }
         originPoint = caster.transform.position;
         targetPoint = target.transform.position;

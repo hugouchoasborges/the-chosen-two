@@ -17,13 +17,13 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > timeout && (!GlobalVariables.player.isDamaged) && (!GlobalVariables.player2.isDamaged))
+        if (Time.time > timeout && (!GlobalVariables.player1.isDamaged) && (!GlobalVariables.player2.isDamaged))
         {
             SecretEnding();
         }
         else
         {
-            if (GlobalVariables.player.isDead)
+            if (GlobalVariables.player1.isDead)
                 RedVictory();
             else if (GlobalVariables.player2.isDead)
                 BlueVictory();
