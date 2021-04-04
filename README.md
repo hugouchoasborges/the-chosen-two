@@ -34,8 +34,6 @@ Programadores:
 ## Imagens
 
 - ![Cover](https://img.itch.zone/aW1nLzIxMzEwNTIucG5n/315x250%23c/FobvXF.png)
-- ![01](http://hugouchoasborges.github.io/images/the-chosen-two/01.jpeg)
-- ![02](http://hugouchoasborges.github.io/images/the-chosen-two/02.jpeg)
-- ![03](http://hugouchoasborges.github.io/images/the-chosen-two/03.jpeg)
-- ![04](http://hugouchoasborges.github.io/images/the-chosen-two/04.png)
-- ![05](http://hugouchoasborges.github.io/images/the-chosen-two/05.jpeg)
+- ![01](https://img.itch.zone/aW1hZ2UvNDI1MzU4LzIxMzEwNTQuanBlZw==/original/4Okuu1.jpeg)
+- ![02](https://img.itch.zone/aW1hZ2UvNDI1MzU4LzIxMzEwNTUuanBlZw==/original/S0nzNN.jpeg)
+- ![03](https://img.itch.zone/aW1hZ2UvNDI1MzU4LzIxMzEwNTMuanBlZw==/original/H2RigD.jpeg)
